@@ -1,0 +1,1185 @@
+TERMO ÚNICO DE ADESÃO, CIÊNCIA, CONFIDENCIALIDADE, UTILIZAÇÃO DAS PLATAFORMAS, PRODUÇÃO DE PROVAS DIGITAIS, PROTEÇÃO DE DADOS PESSOAIS E RESPONSABILIDADE PELO ACESSO AO SISTEMA
+DEX INVEST COMÉRCIO E VAREJO LTDA.
+STAR GOLD SERVIÇOS OPERACIONAIS LTDA.
+
+Versão: 1.0
+Vigência: 10 (dez) anos
+Documento integrante do Programa Corporativo de Governança, Compliance, Segurança da Informação, Integridade Corporativa, Proteção de Dados Pessoais e Gestão de Riscos
+
+DA FINALIDADE DO TERMO
+O presente instrumento possui por finalidade consolidar, em documento único, todas as declarações de ciência, adesão, autorização, responsabilidade e confidencialidade relacionadas à utilização das Plataformas Tecnológicas, aos Sistemas Corporativos, às Políticas Institucionais e às normas internas adotadas pelas CONTRATANTES.
+Este documento integra o Programa Corporativo de Governança, Compliance, Gestão de Riscos, Segurança da Informação, Integridade Corporativa e Proteção de Dados Pessoais das Empresas, estabelecendo deveres, responsabilidades e procedimentos aplicáveis ao PRESTADOR durante toda a vigência da relação contratual.
+O presente Termo substitui, para todos os fins de direito, os seguintes instrumentos individuais:
+I – Termo de Uso das Plataformas Operacionais;
+II – Termo de Confidencialidade (NDA);
+III – Termo de Ciência sobre Produção Antecipada de Provas Digitais;
+IV – Termo de Responsabilidade pelo Acesso ao Sistema;
+V – Termo de Ciência da Política de Privacidade e Proteção de Dados Pessoais;
+VI – Termo de Ciência do Código de Ética e Conduta;
+VII – Termo de Ciência da Política Antifraude;
+VIII – Termo de Ciência da Política de Segurança da Informação;
+IX – Termo de Ciência dos Manuais Operacionais;
+X – demais termos de adesão relacionados às Políticas Corporativas.
+________________________________________
+DOS OBJETIVOS
+O presente Termo tem por objetivos:
+I – promover segurança jurídica às relações estabelecidas entre as partes;
+II – consolidar em instrumento único todas as políticas institucionais aplicáveis ao PRESTADOR;
+III – garantir transparência quanto às regras de utilização das Plataformas Corporativas;
+IV – disciplinar o tratamento de dados pessoais;
+V – proteger informações confidenciais;
+VI – prevenir fraudes;
+VII – fortalecer os mecanismos de Governança Corporativa;
+VIII – estabelecer regras relativas à produção antecipada de provas digitais;
+IX – regulamentar a utilização de sistemas tecnológicos;
+X – disciplinar o acesso às Plataformas Corporativas.
+________________________________________
+DA BASE LEGAL
+O presente Termo foi elaborado com fundamento, dentre outros, nos seguintes diplomas legais:
+I – Constituição da República Federativa do Brasil;
+II – Código Civil, especialmente os artigos 104, 107, 113, 187, 389, 421, 421-A, 422, 927 e demais dispositivos aplicáveis;
+III – Código de Processo Civil, especialmente os artigos 369 a 383, relativos à produção de provas;
+IV – Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais – LGPD);
+V – Lei nº 12.965/2014 (Marco Civil da Internet);
+VI – Lei nº 14.063/2020 (Lei das Assinaturas Eletrônicas);
+VII – Lei nº 13.874/2019 (Lei da Liberdade Econômica);
+VIII – Lei nº 12.846/2013 (Lei Anticorrupção);
+IX – legislação civil, empresarial e processual aplicável.
+________________________________________
+DA NATUREZA JURÍDICA DO TERMO
+O presente instrumento possui natureza:
+•	contratual; 
+•	declaratória; 
+•	preventiva; 
+•	organizacional; 
+•	tecnológica; 
+•	documental; 
+•	probatória. 
+Este Termo integra o Contrato de Prestação de Serviços Autônomos celebrado entre as partes, complementando as Políticas Corporativas das CONTRATANTES.
+Sua assinatura não altera a natureza jurídica da relação contratual existente, servindo exclusivamente como instrumento de adesão às normas institucionais.
+________________________________________
+DA ABRANGÊNCIA
+As disposições deste Termo aplicam-se a todos os Prestadores de Serviços Autônomos que utilizem, direta ou indiretamente:
+•	sistemas eletrônicos; 
+•	aplicativos; 
+•	plataformas digitais; 
+•	portais corporativos; 
+•	dashboards; 
+•	ferramentas de autenticação; 
+•	recursos tecnológicos; 
+•	bancos de dados; 
+•	documentos eletrônicos; 
+•	informações confidenciais; 
+•	canais de comunicação das CONTRATANTES. 
+________________________________________
+DOS PRINCÍPIOS NORTEADORES
+A interpretação e aplicação deste Termo observarão permanentemente os seguintes princípios:
+I – legalidade;
+II – boa-fé objetiva;
+III – transparência;
+IV – ética;
+V – cooperação;
+VI – segurança jurídica;
+VII – livre iniciativa;
+VIII – autonomia privada;
+IX – proteção de dados pessoais;
+X – segurança da informação;
+XI – prevenção à fraude;
+XII – governança corporativa;
+XIII – integridade institucional;
+XIV – proporcionalidade;
+XV – razoabilidade.
+________________________________________
+DA INTEGRAÇÃO COM AS POLÍTICAS CORPORATIVAS
+O PRESTADOR declara ciência de que este Termo integra, complementa e deverá ser interpretado conjuntamente com os seguintes documentos:
+•	Contrato de Prestação de Serviços Autônomos; 
+•	Manual Corporativo de Governança; 
+•	Código de Ética, Conduta, Integridade e Compliance; 
+•	Manual Operacional da respectiva função; 
+•	Política Corporativa Antifraude; 
+•	Política Corporativa de Privacidade e Proteção de Dados Pessoais (LGPD); 
+•	Política de Segurança da Informação; 
+•	Política de Produção Antecipada de Provas; 
+•	Política de Confidencialidade; 
+•	demais normas internas eventualmente publicadas pelas CONTRATANTES. 
+________________________________________
+DECLARAÇÃO PRELIMINAR DO PRESTADOR
+O PRESTADOR declara, desde já, que:
+I – recebeu acesso ao presente Termo antes de sua assinatura;
+II – realizou sua leitura integral;
+III – compreendeu todas as disposições constantes deste instrumento;
+IV – teve oportunidade de esclarecer dúvidas antes da manifestação de sua vontade;
+V – adere voluntariamente às políticas corporativas nele previstas;
+VI – reconhece que todas as disposições possuem finalidade preventiva, organizacional, tecnológica e de governança;
+VII – compromete-se a observar integralmente este Termo durante toda a vigência da relação contratual.
+________________________________________
+CAPÍTULO I
+DA ADESÃO ÀS POLÍTICAS CORPORATIVAS
+________________________________________
+Seção I
+Das Disposições Gerais
+Art. 1º.
+Pelo presente Termo, o PRESTADOR declara que recebeu acesso prévio, integral e suficiente às Políticas Corporativas das DEX INVEST COMÉRCIO E VAREJO LTDA. e STAR GOLD SERVIÇOS OPERACIONAIS LTDA., comprometendo-se a observá-las durante toda a vigência da relação contratual.
+A adesão ocorre de forma livre, consciente, voluntária e informada, observando os princípios da autonomia privada, da boa-fé objetiva e da liberdade contratual previstos nos artigos 104, 107, 113, 421, 421-A e 422 do Código Civil.
+________________________________________
+Seção II
+Do Manual Corporativo
+Art. 2º.
+O PRESTADOR declara que recebeu acesso ao Manual Corporativo de Governança, Compliance, Prestação de Serviços Autônomos, Segurança da Informação e Gestão de Riscos, comprometendo-se a observar todas as suas diretrizes.
+________________________________________
+Art. 3º.
+O Manual Corporativo constitui documento integrante da relação contratual mantida entre as partes, devendo ser interpretado conjuntamente com os demais instrumentos corporativos.
+________________________________________
+Seção III
+Do Contrato de Prestação de Serviços
+Art. 4º.
+O PRESTADOR declara que recebeu cópia integral do Contrato de Prestação de Serviços Autônomos, reconhecendo que suas cláusulas refletem a livre manifestação de vontade das partes.
+________________________________________
+Art. 5º.
+O PRESTADOR compromete-se a cumprir integralmente as obrigações contratuais assumidas, observando os princípios da boa-fé objetiva, cooperação, lealdade contratual e confiança legítima.
+________________________________________
+Seção IV
+Do Código de Ética
+Art. 6º.
+O PRESTADOR declara ciência do Código de Ética, Conduta, Integridade e Compliance das CONTRATANTES.
+________________________________________
+Art. 7º.
+Compromete-se a desenvolver suas atividades pautado pelos princípios da:
+I – legalidade;
+II – ética;
+III – integridade;
+IV – transparência;
+V – boa-fé objetiva;
+VI – respeito;
+VII – responsabilidade;
+VIII – cooperação.
+________________________________________
+Seção V
+Da Política Corporativa LGPD
+Art. 8º.
+O PRESTADOR declara ciência da Política Corporativa de Privacidade e Proteção de Dados Pessoais, comprometendo-se a observar integralmente as disposições da Lei nº 13.709/2018 (LGPD).
+________________________________________
+Art. 9º.
+O PRESTADOR compromete-se a utilizar dados pessoais exclusivamente para finalidades relacionadas à execução das atividades contratadas, abstendo-se de qualquer tratamento incompatível com a legislação vigente.
+________________________________________
+Seção VI
+Da Política Antifraude
+Art. 10.
+O PRESTADOR declara ciência da Política Corporativa Antifraude, comprometendo-se a adotar postura diligente na prevenção, identificação e comunicação de fraudes, irregularidades ou tentativas de manipulação das operações.
+________________________________________
+Art. 11.
+O PRESTADOR compromete-se a não praticar, facilitar, ocultar ou colaborar com qualquer conduta fraudulenta relacionada às operações, aos sistemas ou às informações das CONTRATANTES.
+________________________________________
+Seção VII
+Da Política de Segurança da Informação
+Art. 12.
+O PRESTADOR declara ciência da Política de Segurança da Informação, comprometendo-se a preservar a confidencialidade, integridade, disponibilidade e autenticidade das informações às quais tiver acesso.
+________________________________________
+Art. 13.
+O PRESTADOR compromete-se a utilizar os recursos tecnológicos das CONTRATANTES exclusivamente para as finalidades autorizadas.
+________________________________________
+Seção VIII
+Do Manual Operacional
+Art. 14.
+O PRESTADOR declara ciência do Manual Operacional correspondente à função desempenhada, comprometendo-se a observar suas diretrizes operacionais.
+________________________________________
+Art. 15.
+O Manual Operacional possui natureza exclusivamente técnica, preventiva e organizacional, não alterando a natureza civil da relação contratual.
+________________________________________
+Seção IX
+Da Política de Produção Antecipada de Provas
+Art. 16.
+O PRESTADOR declara ciência da Política Corporativa de Produção Antecipada de Provas Digitais, reconhecendo que registros eletrônicos poderão ser preservados para auditorias, investigações e exercício regular de direitos, nos termos dos artigos 369 a 383 do Código de Processo Civil.
+________________________________________
+Art. 17.
+O PRESTADOR reconhece que logs, registros eletrônicos, metadados, autenticações, geolocalização, fotografias, vídeos, assinaturas eletrônicas e demais evidências digitais poderão ser preservados observando-se a legislação vigente.
+________________________________________
+Seção X
+Da Integração das Políticas Corporativas
+Art. 18.
+Todas as Políticas Corporativas das CONTRATANTES deverão ser interpretadas de forma integrada, complementar e sistemática.
+________________________________________
+Art. 19.
+A eventual atualização de qualquer Política Corporativa passará a integrar automaticamente o conjunto normativo aplicável ao PRESTADOR, desde que disponibilizada pelos meios oficiais das CONTRATANTES.
+________________________________________
+Art. 20.
+O PRESTADOR declara que:
+I – recebeu acesso a todos os documentos corporativos mencionados neste Capítulo;
+II – realizou sua leitura integral;
+III – compreendeu suas disposições;
+IV – teve oportunidade de esclarecer dúvidas;
+V – compromete-se a observar integralmente todas as Políticas Corporativas durante toda a vigência da relação contratual.
+________________________________________
+CAPÍTULO II
+DA UTILIZAÇÃO DAS PLATAFORMAS CORPORATIVAS
+________________________________________
+Seção I
+Das Disposições Gerais
+Art. 21.
+As Plataformas Corporativas disponibilizadas pelas CONTRATANTES constituem ferramentas tecnológicas destinadas à gestão das operações, comunicação institucional, segurança da informação e organização dos serviços contratados.
+________________________________________
+Art. 22.
+A utilização das Plataformas possui finalidade exclusivamente operacional, tecnológica, administrativa e documental.
+________________________________________
+Seção II
+Do Login
+Art. 23.
+O acesso às Plataformas será realizado mediante login individual disponibilizado ao PRESTADOR.
+O login possui natureza pessoal, exclusiva e intransferível.
+________________________________________
+Seção III
+Da Senha
+Art. 24.
+O PRESTADOR é integralmente responsável pela guarda, sigilo e utilização de sua senha de acesso.
+É vedado compartilhar credenciais com terceiros.
+________________________________________
+Seção IV
+Do Face ID
+Art. 25.
+As CONTRATANTES poderão utilizar autenticação facial (Face ID) para validação da identidade do PRESTADOR.
+________________________________________
+Art. 26.
+A autenticação facial será utilizada exclusivamente para:
+I – confirmação da identidade;
+II – prevenção de fraudes;
+III – segurança das Plataformas;
+IV – exercício regular de direitos.
+________________________________________
+Seção V
+Da Biometria
+Art. 27.
+As CONTRATANTES poderão utilizar mecanismos biométricos para autenticação eletrônica, observando a Lei Geral de Proteção de Dados Pessoais.
+________________________________________
+Seção VI
+Do Token de Segurança
+Art. 28.
+Poderão ser utilizados tokens eletrônicos destinados ao reforço da autenticação dos acessos às Plataformas.
+________________________________________
+Seção VII
+Do Portal Corporativo
+Art. 29.
+O Portal Corporativo constitui ambiente oficial para disponibilização de documentos, comunicados, treinamentos, indicadores e demais informações institucionais.
+________________________________________
+Seção VIII
+Do Aplicativo
+Art. 30.
+As CONTRATANTES poderão disponibilizar Aplicativos Oficiais destinados ao gerenciamento das operações.
+O PRESTADOR compromete-se a utilizar exclusivamente as versões oficiais disponibilizadas.
+________________________________________
+Seção IX
+Do Dashboard
+Art. 31.
+As Plataformas poderão disponibilizar dashboards contendo informações operacionais, estatísticas e indicadores de desempenho institucional.
+Esses dados possuem finalidade exclusivamente gerencial.
+________________________________________
+Seção X
+Do GPS
+Art. 32.
+Quando tecnicamente aplicável, poderão ser utilizados registros de GPS e geolocalização para autenticação das operações, segurança da informação e prevenção de fraudes.
+________________________________________
+Seção XI
+Dos Logs
+Art. 33.
+As Plataformas poderão registrar automaticamente logs relativos aos acessos, autenticações, operações realizadas, horários, dispositivos utilizados e demais eventos tecnológicos.
+________________________________________
+Seção XII
+Do Endereço IP
+Art. 34.
+As CONTRATANTES poderão registrar o endereço IP utilizado durante os acessos às Plataformas, observadas as disposições do Marco Civil da Internet e da LGPD.
+________________________________________
+Seção XIII
+Da VPN
+Art. 35.
+É vedada a utilização de VPN, proxies, mascaradores de IP ou quaisquer mecanismos destinados a ocultar, adulterar ou dificultar a identificação da origem dos acessos, salvo autorização expressa das CONTRATANTES.
+________________________________________
+Seção XIV
+Da Segurança das Plataformas
+Art. 36.
+O PRESTADOR compromete-se a utilizar as Plataformas observando os princípios da segurança da informação, confidencialidade, integridade, autenticidade e disponibilidade.
+________________________________________
+Art. 37.
+É vedada qualquer tentativa de invasão, engenharia reversa, manipulação de sistemas, utilização de softwares maliciosos ou acesso não autorizado às Plataformas.
+________________________________________
+Seção XV
+Da Proteção das Credenciais
+Art. 38.
+O PRESTADOR responderá pelos acessos realizados mediante suas credenciais, salvo comprovação de utilização fraudulenta por terceiros sem sua participação ou culpa.
+________________________________________
+Seção XVI
+Da Auditoria Tecnológica
+Art. 39.
+As Plataformas poderão ser submetidas a auditorias periódicas destinadas à preservação de sua integridade e segurança.
+________________________________________
+Seção XVII
+Da Produção de Evidências
+Art. 40.
+Os registros eletrônicos produzidos durante a utilização das Plataformas poderão ser preservados para auditorias, produção antecipada de provas, investigações internas e exercício regular de direitos.
+________________________________________
+Seção XVIII
+Da Integração Tecnológica
+Art. 41.
+As Plataformas integram o Programa Corporativo de Governança, Compliance, Segurança da Informação e Gestão de Riscos das CONTRATANTES.
+________________________________________
+Seção XIX
+Das Atualizações
+Art. 42.
+As CONTRATANTES poderão promover atualizações tecnológicas, correções, melhorias e alterações de funcionalidades sempre que necessário.
+________________________________________
+Seção XX
+Da Interpretação
+Art. 43.
+As disposições deste Capítulo deverão ser interpretadas em conformidade com a Constituição Federal, o Código Civil, a LGPD, o Marco Civil da Internet, a Lei nº 14.063/2020 e as demais normas aplicáveis.
+________________________________________
+Art. 44.
+A utilização das Plataformas constitui condição necessária para a execução das atividades contratadas, observadas as regras de segurança, confidencialidade e integridade previstas neste Termo.
+________________________________________
+Art. 45.
+O PRESTADOR reconhece que os mecanismos de login, senha, Face ID, biometria, token, Portal Corporativo, Aplicativo, Dashboard, GPS, logs, endereço IP, autenticações eletrônicas e demais recursos tecnológicos possuem finalidade exclusivamente relacionada à segurança da informação, governança corporativa, prevenção de fraudes, gestão operacional, proteção das Plataformas e exercício regular de direitos, não podendo ser interpretados, isoladamente ou em conjunto, como instrumentos de fiscalização pessoal, subordinação jurídica ou qualquer elemento apto a modificar a natureza civil da relação contratual estabelecida entre as partes.
+________________________________________
+CAPÍTULO III
+DA CONFIDENCIALIDADE (NDA)
+________________________________________
+Seção I
+Das Disposições Gerais
+Art. 46.
+O presente Capítulo estabelece as regras de confidencialidade aplicáveis a todas as informações, documentos, sistemas, processos, tecnologias e conhecimentos aos quais o PRESTADOR tiver acesso em razão da relação contratual mantida com a DEX INVEST COMÉRCIO E VAREJO LTDA
+O dever de confidencialidade constitui obrigação contratual essencial, fundamentada nos artigos 113, 187, 389, 421, 421-A e 422 do Código Civil.
+________________________________________
+Art. 47.
+O PRESTADOR compromete-se a manter absoluto sigilo sobre todas as informações classificadas como confidenciais, abstendo-se de divulgá-las, reproduzi-las, compartilhá-las ou utilizá-las para finalidade diversa daquela autorizada pelas CONTRATANTES.
+________________________________________
+Seção II
+Das Informações Confidenciais
+Art. 48.
+Consideram-se Informações Confidenciais, independentemente da forma de armazenamento ou transmissão:
+I — documentos;
+II — contratos;
+III — relatórios;
+IV — planilhas;
+V — informações financeiras;
+VI — informações estratégicas;
+VII — dados operacionais;
+VIII — bancos de dados;
+IX — informações tecnológicas;
+X — informações comerciais;
+XI — informações jurídicas;
+XII — informações tributárias;
+XIII — documentos internos;
+XIV — manuais;
+XV — políticas corporativas.
+________________________________________
+Art. 49.
+A confidencialidade abrange informações escritas, verbais, eletrônicas, digitais, audiovisuais ou obtidas mediante observação das operações.
+________________________________________
+Seção III
+Dos Clientes
+Art. 50.
+O PRESTADOR compromete-se a preservar integralmente o sigilo das informações relativas aos Clientes das CONTRATANTES.
+________________________________________
+Art. 51.
+É vedada a utilização das informações dos Clientes para fins particulares, concorrenciais ou estranhos à execução das atividades contratadas.
+________________________________________
+Seção IV
+Dos Parceiros Comerciais
+Art. 52.
+As informações relacionadas aos Parceiros Comerciais das CONTRATANTES também são consideradas confidenciais.
+________________________________________
+Art. 53.
+Incluem-se nessa proteção fornecedores, franqueadores, franqueados, prestadores de serviços, parceiros estratégicos e demais terceiros contratualmente vinculados às Empresas.
+________________________________________
+Seção V
+Das Estratégias Empresariais
+Art. 54.
+Constituem informações confidenciais todas as estratégias comerciais, operacionais, financeiras, tecnológicas e jurídicas desenvolvidas pelas CONTRATANTES.
+________________________________________
+Art. 55.
+É vedada qualquer divulgação de planejamento estratégico, expansão, negociações, indicadores internos ou decisões empresariais.
+________________________________________
+Seção VI
+Do Know-how
+Art. 56.
+O know-how desenvolvido pelas CONTRATANTES constitui patrimônio intelectual protegido.
+________________________________________
+Art. 57.
+O PRESTADOR reconhece que métodos operacionais, fluxos, procedimentos, modelos de gestão, protocolos internos e tecnologias próprias são protegidos pelo dever de confidencialidade.
+________________________________________
+Seção VII
+Dos Preços e Condições Comerciais
+Art. 58.
+São confidenciais os preços, tabelas comerciais, margens, custos, políticas de remuneração, critérios financeiros e negociações mantidas pelas CONTRATANTES.
+________________________________________
+Seção VIII
+Dos Relatórios
+Art. 59.
+Relatórios operacionais, financeiros, estatísticos, jurídicos, tecnológicos e gerenciais possuem natureza confidencial.
+________________________________________
+Seção IX
+Dos Softwares
+Art. 60.
+Softwares utilizados pelas CONTRATANTES, seus códigos, funcionalidades, integrações, algoritmos e configurações constituem informações protegidas.
+________________________________________
+Art. 61.
+É vedada qualquer tentativa de engenharia reversa, cópia, reprodução, modificação ou utilização indevida dos sistemas.
+________________________________________
+Seção X
+Dos Bancos de Dados
+Art. 62.
+Os bancos de dados das CONTRATANTES possuem natureza confidencial e protegida pela legislação brasileira.
+________________________________________
+Art. 63.
+É proibida sua reprodução, exportação, cópia, comercialização ou utilização para fins particulares.
+________________________________________
+Seção XI
+Da Divulgação Indevida
+Art. 64.
+A divulgação não autorizada de informações confidenciais constitui violação contratual grave.
+________________________________________
+Art. 65.
+O dever de confidencialidade permanece mesmo após o encerramento da relação contratual.
+________________________________________
+Seção XII
+Do Prazo de Confidencialidade
+Art. 66.
+O dever de confidencialidade permanecerá vigente durante toda a execução contratual e por 10 (dez) anos após seu encerramento, independentemente do motivo da rescisão.
+________________________________________
+Art. 67.
+As informações protegidas por segredo industrial, propriedade intelectual ou legislação específica permanecerão protegidas enquanto perdurar sua natureza confidencial.
+________________________________________
+Seção XIII
+Da Responsabilidade Civil
+Art. 68.
+O PRESTADOR responderá civilmente pelos danos materiais, morais, emergentes, lucros cessantes e demais prejuízos decorrentes da violação deste Capítulo.
+________________________________________
+Art. 69.
+A responsabilização observará os artigos 186, 187, 389, 402, 403, 421, 422 e 927 do Código Civil.
+________________________________________
+Seção XIV
+Da Indenização
+Art. 70.
+Sem prejuízo das demais medidas legais cabíveis, o PRESTADOR ficará obrigado ao integral ressarcimento dos prejuízos comprovadamente suportados pelas CONTRATANTES em decorrência da violação do dever de confidencialidade.
+________________________________________
+Seção XV
+Da Tutela de Urgência
+Art. 71.
+As CONTRATANTES poderão requerer medidas judiciais de urgência destinadas à cessação imediata da divulgação indevida de informações confidenciais.
+________________________________________
+Seção XVI
+Da Produção de Provas
+Art. 72.
+As CONTRATANTES poderão produzir e preservar provas digitais destinadas à comprovação de eventual violação deste Capítulo.
+________________________________________
+Seção XVII
+Das Exceções
+Art. 73.
+Não serão consideradas confidenciais as informações:
+I — tornadas públicas por determinação legal;
+II — divulgadas mediante autorização expressa das CONTRATANTES;
+III — cuja divulgação seja determinada por autoridade competente.
+________________________________________
+Seção XVIII
+Da Cooperação
+Art. 74.
+O PRESTADOR compromete-se a comunicar imediatamente qualquer suspeita de acesso indevido às informações confidenciais.
+________________________________________
+Seção XIX
+Da Integração
+Art. 75.
+Este Capítulo integra o Contrato de Prestação de Serviços, o Manual Corporativo, a Política LGPD, a Política de Segurança da Informação e a Política Antifraude.
+________________________________________
+Seção XX
+Das Disposições Finais
+Art. 76.
+As obrigações previstas neste Capítulo permanecem exigíveis independentemente da continuidade da relação contratual.
+________________________________________
+Art. 77.
+O descumprimento das obrigações de confidencialidade poderá ensejar medidas civis, contratuais e judiciais.
+________________________________________
+Art. 78.
+A eventual tolerância das CONTRATANTES quanto ao descumprimento deste Capítulo não importará renúncia de direitos.
+________________________________________
+Art. 79.
+As obrigações de confidencialidade possuem natureza autônoma e sobrevivem ao término do Contrato.
+________________________________________
+Art. 80.
+O PRESTADOR declara compreender que o patrimônio informacional das CONTRATANTES constitui ativo estratégico protegido pela legislação brasileira, comprometendo-se a preservar seu sigilo absoluto e reconhecendo que eventual violação poderá ensejar responsabilização civil, contratual e, quando cabível, penal.
+________________________________________
+CAPÍTULO IV
+DA PROTEÇÃO DE DADOS PESSOAIS (LGPD)
+________________________________________
+Seção I
+Das Disposições Gerais
+Art. 81.
+O tratamento de dados pessoais realizado pelas CONTRATANTES observará integralmente a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais), bem como suas normas regulamentares.
+________________________________________
+Art. 82.
+As CONTRATANTES comprometem-se a tratar dados pessoais observando os princípios da finalidade, adequação, necessidade, livre acesso, qualidade dos dados, transparência, segurança, prevenção, não discriminação e responsabilização.
+________________________________________
+Seção II
+Do Consentimento
+Art. 83.
+Sempre que exigido pela legislação aplicável, o tratamento de dados pessoais dependerá do consentimento livre, informado e inequívoco do titular.
+________________________________________
+Art. 84.
+Quando o tratamento decorrer de outra base legal prevista na LGPD, poderá ser dispensado o consentimento, observados os requisitos legais.
+________________________________________
+Seção III
+Das Bases Legais
+Art. 85.
+O tratamento de dados poderá fundamentar-se, dentre outras hipóteses, em:
+I — execução contratual;
+II — cumprimento de obrigação legal;
+III — exercício regular de direitos;
+IV — legítimo interesse;
+V — proteção ao crédito;
+VI — tutela da saúde;
+VII — consentimento, quando aplicável.
+________________________________________
+Seção IV
+Do Tratamento de Dados
+Art. 86.
+Os dados pessoais serão tratados exclusivamente para finalidades legítimas relacionadas às atividades desenvolvidas pelas CONTRATANTES.
+________________________________________
+Art. 87.
+É vedado o tratamento de dados para finalidades incompatíveis com aquelas originalmente informadas.
+________________________________________
+Seção V
+Da Retenção
+Art. 88.
+Os dados pessoais serão armazenados pelo período necessário ao cumprimento das finalidades legais, contratuais e regulatórias.
+________________________________________
+Art. 89.
+Encerrada a finalidade do tratamento, os dados poderão ser eliminados, anonimizados ou preservados quando houver obrigação legal ou necessidade de exercício regular de direitos.
+________________________________________
+Seção VI
+Da Anonimização
+Art. 90.
+Sempre que tecnicamente possível, poderão ser utilizados procedimentos de anonimização ou pseudonimização dos dados pessoais.
+________________________________________
+Seção VII
+Do Compartilhamento
+Art. 91.
+Os dados pessoais poderão ser compartilhados exclusivamente nas hipóteses autorizadas pela legislação vigente.
+________________________________________
+Art. 92.
+O compartilhamento poderá ocorrer com:
+I — parceiros comerciais;
+II — fornecedores;
+III — operadores de dados;
+IV — autoridades públicas;
+V — órgãos reguladores;
+VI — Poder Judiciário, quando necessário.
+________________________________________
+Seção VIII
+Dos Direitos do Titular
+Art. 93.
+O titular dos dados poderá exercer os direitos previstos no artigo 18 da Lei Geral de Proteção de Dados.
+________________________________________
+Art. 94.
+Incluem-se entre esses direitos:
+I — confirmação do tratamento;
+II — acesso;
+III — correção;
+IV — anonimização;
+V — bloqueio;
+VI — eliminação;
+VII — portabilidade;
+VIII — informação sobre compartilhamentos;
+IX — revogação do consentimento, quando aplicável.
+________________________________________
+Seção IX
+Do Canal LGPD
+Art. 95.
+As CONTRATANTES disponibilizarão canal destinado ao exercício dos direitos relacionados à proteção de dados pessoais.
+________________________________________
+Art. 96.
+As solicitações serão tratadas observando os prazos e procedimentos previstos na legislação.
+________________________________________
+Seção X
+Da Segurança da Informação
+Art. 97.
+Serão adotadas medidas técnicas e administrativas destinadas à proteção dos dados pessoais contra acessos não autorizados, perdas, destruição, alteração ou divulgação indevida.
+________________________________________
+Seção XI
+Dos Incidentes de Segurança
+Art. 98.
+Os incidentes envolvendo dados pessoais serão tratados conforme o Plano Corporativo de Resposta a Incidentes.
+________________________________________
+Art. 99.
+Sempre que exigido pela legislação, os incidentes serão comunicados à Autoridade Nacional de Proteção de Dados e aos titulares afetados.
+________________________________________
+Seção XII
+Da ANPD
+Art. 100.
+As CONTRATANTES cooperarão integralmente com a Autoridade Nacional de Proteção de Dados (ANPD), observando suas determinações e orientações.
+________________________________________
+Seção XIII
+Da Responsabilidade
+Art. 101.
+O PRESTADOR compromete-se a tratar dados pessoais exclusivamente nos limites autorizados pelas CONTRATANTES.
+________________________________________
+Art. 102.
+É vedada qualquer utilização de dados pessoais para finalidade particular, concorrencial ou diversa daquela prevista neste Termo.
+________________________________________
+Seção XIV
+Da Confidencialidade
+Art. 103.
+Os dados pessoais também se submetem às obrigações de confidencialidade previstas neste instrumento.
+________________________________________
+Seção XV
+Da Auditoria
+Art. 104.
+As CONTRATANTES poderão realizar auditorias destinadas à verificação da conformidade com a legislação de proteção de dados.
+________________________________________
+Seção XVI
+Da Produção de Provas
+Art. 105.
+Os registros relativos ao tratamento de dados poderão ser preservados para exercício regular de direitos, observada a LGPD e o Código de Processo Civil.
+________________________________________
+Seção XVII
+Da Integração
+Art. 106.
+Este Capítulo integra a Política Corporativa LGPD, a Política de Segurança da Informação e o Manual Corporativo.
+________________________________________
+Seção XVIII
+Das Atualizações
+Art. 107.
+As CONTRATANTES poderão revisar seus procedimentos de proteção de dados sempre que houver alterações legislativas, regulatórias ou tecnológicas.
+________________________________________
+Seção XIX
+Da Interpretação
+Art. 108.
+As disposições deste Capítulo deverão ser interpretadas em conformidade com a Constituição Federal, a Lei Geral de Proteção de Dados Pessoais e as normas expedidas pela ANPD.
+________________________________________
+Art. 109.
+O PRESTADOR compromete-se a cooperar com as CONTRATANTES na adoção das medidas necessárias ao cumprimento da legislação de proteção de dados.
+________________________________________
+Art. 110.
+O PRESTADOR declara ciência de que a proteção de dados pessoais constitui diretriz essencial das CONTRATANTES e compromete-se a observar integralmente as disposições da Lei nº 13.709/2018, das Políticas Corporativas e deste Termo, reconhecendo que eventual tratamento indevido poderá ensejar responsabilização civil, contratual, administrativa e, quando cabível, penal.
+________________________________________
+CAPÍTULO V
+DA CESSÃO DE USO DE IMAGEM, VOZ E NOME
+________________________________________
+Seção I
+Das Disposições Gerais
+Art. 111.
+O presente Capítulo disciplina a autorização para utilização da imagem, voz, nome, fotografias, registros audiovisuais e demais elementos de identificação do PRESTADOR, observando os artigos 11 a 21 do Código Civil, a Constituição Federal, a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018) e demais normas aplicáveis.
+________________________________________
+Art. 112.
+A autorização prevista neste Capítulo possui natureza civil, contratual e gratuita, destinando-se exclusivamente às finalidades previstas neste instrumento.
+________________________________________
+Seção II
+Das Finalidades Autorizadas
+Art. 113.
+O PRESTADOR autoriza a utilização de sua imagem, voz e nome para as seguintes finalidades:
+I — identificação pessoal;
+II — autenticação eletrônica;
+III — segurança das Plataformas;
+IV — prevenção à fraude;
+V — auditorias;
+VI — controles internos;
+VII — registros operacionais;
+VIII — produção antecipada de provas;
+IX — documentação institucional.
+________________________________________
+Art. 114.
+A utilização ocorrerá sempre observando os princípios da finalidade, necessidade, proporcionalidade e minimização do tratamento de dados.
+________________________________________
+Seção III
+Dos Treinamentos
+Art. 115.
+A imagem e a voz do PRESTADOR poderão ser utilizadas em treinamentos internos relacionados às operações das CONTRATANTES.
+________________________________________
+Art. 116.
+Sempre que possível, serão utilizados registros que preservem a privacidade do PRESTADOR.
+________________________________________
+Seção IV
+Das Auditorias
+Art. 117.
+Registros audiovisuais poderão ser utilizados para auditorias internas destinadas à verificação da regularidade das operações.
+________________________________________
+Seção V
+Da Identificação
+Art. 118.
+A imagem poderá ser utilizada para confirmação da identidade do PRESTADOR durante a utilização das Plataformas Corporativas.
+________________________________________
+Seção VI
+Dos Sistemas Corporativos
+Art. 119.
+A fotografia, Face ID, biometria facial e demais registros poderão integrar os sistemas eletrônicos utilizados pelas CONTRATANTES.
+________________________________________
+Seção VII
+Da Segurança
+Art. 120.
+A utilização da imagem e da voz também poderá ocorrer para preservação da segurança patrimonial, tecnológica e operacional.
+________________________________________
+Seção VIII
+Do Marketing Institucional
+Art. 121.
+A utilização da imagem ou da voz do PRESTADOR para campanhas publicitárias, divulgação institucional, redes sociais, material promocional ou marketing externo dependerá de autorização específica, destacada e individual, não sendo abrangida automaticamente pelo presente Termo.
+________________________________________
+Art. 122.
+A recusa quanto ao uso da imagem para marketing institucional não produzirá qualquer consequência contratual ao PRESTADOR.
+________________________________________
+Seção IX
+Dos Documentos Internos
+Art. 123.
+A imagem poderá integrar documentos internos, cadastros, relatórios e sistemas administrativos das CONTRATANTES.
+________________________________________
+Seção X
+Dos Registros Operacionais
+Art. 124.
+Fotografias, vídeos e demais registros produzidos durante as operações poderão ser utilizados para fins de documentação objetiva das atividades desenvolvidas.
+________________________________________
+Seção XI
+Da Proteção dos Direitos da Personalidade
+Art. 125.
+As CONTRATANTES comprometem-se a utilizar imagem, voz e nome do PRESTADOR de forma respeitosa, observando os direitos da personalidade previstos no Código Civil.
+________________________________________
+Seção XII
+Da Proteção de Dados
+Art. 126.
+Os registros de imagem e voz constituem dados pessoais e serão tratados conforme a Lei Geral de Proteção de Dados Pessoais.
+________________________________________
+Seção XIII
+Da Revogação
+Art. 127.
+As autorizações baseadas exclusivamente em consentimento poderão ser revogadas pelo PRESTADOR, ressalvadas as hipóteses em que o tratamento decorrer de outra base legal prevista na LGPD.
+________________________________________
+Seção XIV
+Da Conservação
+Art. 128.
+Os registros poderão ser preservados enquanto necessários ao cumprimento das finalidades legais, contratuais e ao exercício regular de direitos.
+________________________________________
+Seção XV
+Da Integração
+Art. 129.
+Este Capítulo integra a Política Corporativa LGPD, a Política de Segurança da Informação e a Política de Produção Antecipada de Provas.
+________________________________________
+Seção XVI
+Da Responsabilidade
+Art. 130.
+É vedada qualquer utilização da imagem, voz ou nome do PRESTADOR para finalidade diversa daquela prevista neste instrumento, salvo autorização específica ou determinação legal.
+________________________________________
+Seção XVII
+Da Confidencialidade
+Art. 131.
+Os registros contendo imagem ou voz serão protegidos pelas regras de confidencialidade previstas neste Termo.
+________________________________________
+Seção XVIII
+Da Auditoria
+Art. 132.
+Os registros poderão ser submetidos a auditorias internas sempre que necessário.
+________________________________________
+Seção XIX
+Da Interpretação
+Art. 133.
+Este Capítulo deverá ser interpretado em conformidade com a Constituição Federal, o Código Civil, a LGPD e a jurisprudência aplicável aos direitos da personalidade.
+________________________________________
+Art. 134.
+As autorizações aqui previstas destinam-se exclusivamente às finalidades institucionais, operacionais, tecnológicas e de segurança das CONTRATANTES.
+________________________________________
+Art. 135.
+O PRESTADOR declara ciência de que a utilização de sua imagem, voz e nome ocorrerá exclusivamente dentro dos limites previstos neste instrumento, preservando-se seus direitos da personalidade e sua dignidade, em conformidade com a legislação brasileira.
+________________________________________
+CAPÍTULO VI
+DA PRODUÇÃO ANTECIPADA DE PROVAS DIGITAIS
+________________________________________
+Seção I
+Das Disposições Gerais
+Art. 136.
+As CONTRATANTES poderão produzir, preservar e utilizar evidências digitais para auditorias, investigações internas, exercício regular de direitos e processos administrativos, arbitrais ou judiciais, observando os artigos 369 a 383 do Código de Processo Civil.
+________________________________________
+Art. 137.
+A preservação das provas observará os princípios da autenticidade, integridade, rastreabilidade, cadeia de custódia e boa-fé.
+________________________________________
+Seção II
+Dos Logs
+Art. 138.
+Poderão ser preservados logs de autenticação, acesso, operações, eventos sistêmicos e demais registros eletrônicos.
+________________________________________
+Seção III
+Do GPS
+Art. 139.
+Os registros de geolocalização poderão ser preservados para comprovação objetiva de eventos relacionados às operações.
+________________________________________
+Seção IV
+Do Face ID
+Art. 140.
+Os registros de autenticação facial poderão ser preservados como elementos de identificação e segurança.
+________________________________________
+Seção V
+Da Biometria
+Art. 141.
+Os registros biométricos poderão ser preservados para autenticação eletrônica e exercício regular de direitos.
+________________________________________
+Seção VI
+Das Fotografias
+Art. 142.
+Fotografias produzidas durante as operações poderão integrar o conjunto probatório.
+________________________________________
+Seção VII
+Dos Vídeos
+Art. 143.
+Vídeos provenientes das Plataformas, câmeras corporativas ou registros autorizados poderão ser utilizados como elementos de prova.
+________________________________________
+Seção VIII
+Dos Metadados
+Art. 144.
+Os metadados relacionados aos registros eletrônicos poderão ser preservados para comprovação de autenticidade.
+________________________________________
+Seção IX
+Do Hash
+Art. 145.
+Sempre que tecnicamente possível poderão ser utilizados mecanismos de hash criptográfico destinados à verificação da integridade dos documentos eletrônicos.
+________________________________________
+Seção X
+Do Carimbo do Tempo
+Art. 146.
+As CONTRATANTES poderão utilizar carimbo do tempo (timestamp) para certificação da data e hora dos registros eletrônicos.
+________________________________________
+Seção XI
+Da Cadeia de Custódia
+Art. 147.
+A preservação das evidências observará cadeia de custódia documental e digital, assegurando autenticidade e rastreabilidade.
+________________________________________
+Seção XII
+Das Assinaturas Eletrônicas
+Art. 148.
+As assinaturas eletrônicas produzidas por plataformas certificadas poderão ser utilizadas como elemento probatório.
+________________________________________
+Seção XIII
+Da Base Legal
+Art. 149.
+Este Capítulo fundamenta-se nos artigos 369 a 383 do Código de Processo Civil, no Marco Civil da Internet, na Lei nº 14.063/2020 e na Lei Geral de Proteção de Dados.
+________________________________________
+Seção XIV
+Da Utilização Judicial
+Art. 150.
+As evidências preservadas poderão ser utilizadas em processos judiciais, arbitrais ou administrativos.
+________________________________________
+Seção XV
+Da Auditoria
+Art. 151.
+Os registros poderão ser submetidos a auditorias técnicas independentes.
+________________________________________
+Seção XVI
+Da Segurança
+Art. 152.
+As evidências serão protegidas por mecanismos de segurança física e lógica.
+________________________________________
+Seção XVII
+Da Retenção
+Art. 153.
+Os registros serão mantidos pelo prazo necessário ao cumprimento das finalidades legais e contratuais.
+________________________________________
+Seção XVIII
+Da Integração
+Art. 154.
+Este Capítulo integra a Política de Produção Antecipada de Provas, a Política Antifraude e a Política de Segurança da Informação.
+________________________________________
+Seção XIX
+Da Cooperação
+Art. 155.
+O PRESTADOR compromete-se a cooperar com auditorias e investigações internas.
+________________________________________
+Seção XX
+Das Disposições Finais
+As CONTRATANTES poderão utilizar registros de logs, GPS, Face ID, biometria, fotografias, vídeos, metadados, hash, carimbo do tempo, assinaturas eletrônicas e demais evidências digitais como instrumentos de comprovação dos fatos, preservando-se integralmente a cadeia de custódia, a autenticidade das informações e os direitos assegurados pela Constituição Federal, pelo Código de Processo Civil, pelo Marco Civil da Internet, pela Lei nº 14.063/2020 e pela Lei Geral de Proteção de Dados Pessoais.
+________________________________________
+CAPÍTULO VII
+DA RESPONSABILIDADE PELO ACESSO AO SISTEMA
+________________________________________
+Seção I
+Das Disposições Gerais
+Art. 181.
+O acesso às Plataformas Corporativas constitui responsabilidade exclusiva do PRESTADOR, que responderá pela utilização de suas credenciais.
+________________________________________
+Seção II
+Da Conta Pessoal
+Art. 182.
+A conta de acesso é pessoal, individual, exclusiva e intransferível.
+________________________________________
+Seção III
+Da Senha
+Art. 183.
+Compete ao PRESTADOR manter sua senha sob absoluto sigilo.
+________________________________________
+Seção IV
+Da VPN
+Art. 184.
+É vedada a utilização de VPN, proxies ou mecanismos destinados a ocultar a origem dos acessos, salvo autorização expressa.
+________________________________________
+Seção V
+Dos Bots
+Art. 185.
+É proibida a utilização de bots, scripts automatizados ou softwares destinados à manipulação das Plataformas.
+________________________________________
+Seção VI
+Do Deepfake
+Art. 186.
+É vedada a utilização de tecnologias de deepfake para autenticação, cadastro ou qualquer interação com os sistemas.
+________________________________________
+Seção VII
+Do Spoofing
+Art. 187.
+Constitui infração contratual a utilização de técnicas de spoofing, falsificação de identidade digital ou manipulação de autenticações.
+________________________________________
+Seção VIII
+Da Conta Compartilhada
+Art. 188.
+É proibido compartilhar credenciais de acesso com terceiros.
+________________________________________
+Seção IX
+Da Venda da Conta
+Art. 189.
+É vedada a cessão, venda, empréstimo, aluguel ou qualquer forma de transferência da conta de acesso.
+________________________________________
+Seção X
+Dos Documentos Falsos
+Art. 190.
+É proibida a utilização de documentos falsificados, adulterados ou pertencentes a terceiros.
+________________________________________
+Seção XI
+Da CNH Falsa
+Art. 191.
+A apresentação de Carteira Nacional de Habilitação falsa ou adulterada constitui infração grave e poderá ensejar medidas civis, contratuais e penais.
+________________________________________
+Seção XII
+Da Selfie Falsa
+Art. 192.
+É vedada a utilização de selfies manipuladas, sintéticas ou produzidas por inteligência artificial para autenticação.
+________________________________________
+Seção XIII
+Do Face ID
+Art. 193.
+O PRESTADOR compromete-se a utilizar exclusivamente sua própria biometria facial.
+________________________________________
+Seção XIV
+Das Fraudes
+Art. 194.
+Qualquer tentativa de fraude, manipulação dos sistemas ou obtenção de vantagem indevida será objeto de investigação interna.
+________________________________________
+Seção XV
+Da Responsabilidade Civil
+Art. 195.
+O PRESTADOR responderá pelos prejuízos materiais e morais decorrentes de condutas fraudulentas, nos termos dos artigos 186, 187, 389, 402, 403 e 927 do Código Civil.
+________________________________________
+Seção XVI
+Da Responsabilidade Penal
+Art. 196.
+As CONTRATANTES poderão comunicar às autoridades competentes fatos que, em tese, constituam infrações penais, sem prejuízo das medidas civis e contratuais cabíveis.
+________________________________________
+Seção XVII
+Da Auditoria
+Art. 197.
+As Plataformas poderão ser submetidas a auditorias destinadas à identificação de acessos irregulares e comportamentos suspeitos.
+________________________________________
+Seção XVIII
+Da Produção de Provas
+Art. 198.
+As evidências digitais relacionadas a fraudes poderão ser preservadas para utilização em procedimentos administrativos e judiciais.
+________________________________________
+Seção XIX
+Da Integração
+Art. 199.
+Este Capítulo integra a Política Antifraude, a Política de Segurança da Informação, a Política LGPD e a Política de Produção Antecipada de Provas.
+________________________________________
+Seção XX
+Das Disposições Finais
+O PRESTADOR declara ciência de que o acesso às Plataformas Corporativas constitui ato personalíssimo e que qualquer utilização indevida, compartilhamento de credenciais, fraude documental, manipulação tecnológica, utilização de VPN não autorizada, bots, deepfake, spoofing, documentos falsos, CNH falsa, selfie falsa, biometria fraudulenta ou qualquer outra conduta destinada a comprometer a autenticidade dos sistemas poderá ensejar a adoção das medidas administrativas, contratuais, civis e penais cabíveis, bem como a preservação das evidências digitais para fins de exercício regular de direitos pelas CONTRATANTES, sempre em conformidade com a legislação brasileira vigente.
+CAPÍTULO VIII
+DA ASSINATURA ELETRÔNICA
+________________________________________
+Seção I
+Das Disposições Gerais
+Art. 221.
+As partes reconhecem a plena validade jurídica das assinaturas eletrônicas utilizadas na celebração do presente Termo, do Contrato de Prestação de Serviços Autônomos, dos Manuais Corporativos, das Políticas Institucionais e de quaisquer documentos eletrônicos emitidos pelas CONTRATANTES.
+As assinaturas observarão a Lei nº 14.063/2020, a Medida Provisória nº 2.200-2/2001, o Código Civil e demais normas aplicáveis.
+________________________________________
+Art. 222.
+As assinaturas eletrônicas produzirão os mesmos efeitos jurídicos da assinatura manuscrita, obrigando as partes ao fiel cumprimento das obrigações assumidas.
+________________________________________
+Seção II
+Das Plataformas de Assinatura
+Art. 223.
+As CONTRATANTES poderão utilizar plataformas eletrônicas especializadas para formalização de documentos, incluindo, entre outras:
+I – ZapSign;
+II – Clicksign;
+III – outras plataformas eletrônicas equivalentes que observem a legislação brasileira.
+________________________________________
+Art. 224.
+A utilização de platforma eletrônica não compromete a validade, autenticidade ou eficácia jurídica do documento assinado.
+________________________________________
+Seção III
+Da ICP-Brasil
+Art. 225.
+As partes reconhecem a validade das assinaturas eletrônicas realizadas mediante certificados digitais emitidos no âmbito da Infraestrutura de Chaves Públicas Brasileira – ICP-Brasil.
+________________________________________
+Art. 226.
+A utilização de certificado ICP-Brasil constitui meio idôneo de identificação eletrônica das partes.
+________________________________________
+Seção IV
+Do Hash Criptográfico
+Art. 227.
+Os documentos eletrônicos poderão conter hash criptográfico destinado à verificação de sua autenticidade e integridade.
+________________________________________
+Art. 228.
+O hash constitui mecanismo técnico apto a demonstrar eventual alteração posterior do documento.
+________________________________________
+Seção V
+Do Token de Segurança
+Art. 229.
+As plataformas poderão utilizar token eletrônico para autenticação dos signatários.
+________________________________________
+Art. 230.
+O token constitui mecanismo adicional de segurança destinado à validação da identidade do usuário.
+________________________________________
+Seção VI
+Do Face ID
+Art. 231.
+As CONTRATANTES poderão utilizar autenticação facial (Face ID) como mecanismo complementar de identificação dos signatários.
+________________________________________
+Art. 232.
+Os registros faciais serão tratados em conformidade com a Lei Geral de Proteção de Dados Pessoais.
+________________________________________
+Seção VII
+Da Biometria
+Art. 233.
+As plataformas poderão utilizar autenticação biométrica para reforço da segurança das assinaturas eletrônicas.
+________________________________________
+Art. 234.
+Os dados biométricos serão utilizados exclusivamente para confirmação da identidade do signatário.
+________________________________________
+Seção VIII
+Do Carimbo do Tempo
+Art. 235.
+Os documentos poderão conter carimbo do tempo (timestamp), destinado à certificação da data e do horário da manifestação eletrônica de vontade.
+________________________________________
+Art. 236.
+O carimbo do tempo integra o conjunto probatório relacionado à autenticidade documental.
+________________________________________
+Seção IX
+Da Presunção de Autenticidade
+Art. 237.
+A assinatura eletrônica regularmente realizada gera presunção de autenticidade da manifestação de vontade, ressalvada prova em sentido contrário.
+________________________________________
+Seção X
+Da Produção de Provas
+Art. 238.
+Os registros eletrônicos relacionados às assinaturas poderão ser preservados para fins de auditoria, produção antecipada de provas e exercício regular de direitos.
+________________________________________
+Art. 239.
+Este Capítulo integra a Política de Produção Antecipada de Provas, a Política de Segurança da Informação e a Política LGPD.
+________________________________________
+Art. 240.
+O PRESTADOR declara reconhecer a plena validade jurídica das assinaturas eletrônicas, dos certificados digitais, dos registros de autenticação, dos hashes criptográficos, dos tokens, do Face ID, da biometria, dos carimbos do tempo e demais mecanismos tecnológicos utilizados pelas CONTRATANTES, nos termos da Lei nº 14.063/2020, da Medida Provisória nº 2.200-2/2001 e da legislação brasileira aplicável.
+________________________________________
+CAPÍTULO IX
+DAS DISPOSIÇÕES FINAIS
+Arts. 241 ao 260
+________________________________________
+Seção I
+Da Integração Contratual
+Art. 241.
+O presente Termo integra, complementa e deverá ser interpretado conjuntamente com:
+I – Contrato de Prestação de Serviços Autônomos;
+II – Manual Corporativo de Governança;
+III – Código de Ética, Conduta, Integridade e Compliance;
+IV – Política Corporativa de Privacidade e Proteção de Dados Pessoais (LGPD);
+V – Política Corporativa Antifraude;
+VI – Política de Segurança da Informação;
+VII – Manual Operacional correspondente à função exercida;
+VIII – Política de Produção Antecipada de Provas Digitais;
+IX – demais Políticas Institucionais das CONTRATANTES.
+________________________________________
+Seção II
+Da Vigência
+Art. 242.
+O presente Termo entra em vigor na data de sua assinatura, permanecendo vigente pelo prazo de 10 (dez) anos, sem prejuízo das obrigações que, por sua natureza, subsistam ao encerramento da relação contratual.
+________________________________________
+Seção III
+Das Atualizações
+Art. 243.
+As CONTRATANTES poderão revisar, consolidar, atualizar ou substituir este Termo sempre que houver alterações legislativas, evolução tecnológica, aperfeiçoamento das práticas de governança ou necessidade de adequação operacional.
+________________________________________
+Art. 244.
+As versões atualizadas substituirão integralmente as anteriores, após sua disponibilização pelos canais oficiais das CONTRATANTES.
+________________________________________
+Seção IV
+Da Boa-fé Objetiva
+Art. 245.
+As partes comprometem-se a observar permanentemente os princípios previstos nos artigos 113, 421, 421-A e 422 do Código Civil, pautando sua atuação pela boa-fé objetiva, cooperação, transparência, confiança legítima e lealdade contratual.
+________________________________________
+Seção V
+Do Foro
+Art. 246.
+Fica eleito o Foro da Comarca de São Paulo/SP para dirimir quaisquer controvérsias oriundas deste Termo, com renúncia expressa a qualquer outro, por mais privilegiado que seja, ressalvadas as hipóteses de competência absoluta previstas em lei.
+________________________________________
+Seção VI
+Da Responsabilidade
+Art. 247.
+O descumprimento das obrigações previstas neste Termo poderá ensejar a adoção das medidas contratuais, civis, administrativas e, quando cabível, penais, observada a legislação vigente.
+________________________________________
+Art. 248.
+As partes reconhecem que eventual responsabilização observará os princípios da boa-fé, proporcionalidade, contraditório e ampla defesa, quando aplicáveis.
+________________________________________
+Seção VII
+Do Aceite Eletrônico
+Art. 249.
+O aceite deste Termo poderá ocorrer mediante assinatura física ou eletrônica, utilizando certificado digital, biometria, Face ID, token eletrônico ou plataforma de assinatura digital, produzindo todos os efeitos jurídicos previstos na legislação brasileira.
+________________________________________
+Art. 250.
+A assinatura eletrônica equivale, para todos os fins de direito, à assinatura manuscrita das partes.
+________________________________________
+Seção VIII
+Da Produção de Efeitos
+Art. 251.
+O presente Termo produz efeitos imediatos a partir da manifestação válida da vontade das partes.
+________________________________________
+Seção IX
+Da Interpretação
+Art. 252.
+As disposições deste Termo deverão ser interpretadas de forma sistemática, observando-se a Constituição Federal, o Código Civil, o Código de Processo Civil, a LGPD, o Marco Civil da Internet, a Lei nº 14.063/2020, a Lei da Liberdade Econômica e as demais normas aplicáveis.
+________________________________________
+Seção X
+Das Disposições Finais
+Art. 253.
+O presente instrumento constitui documento integrante do Programa Corporativo de Governança, Compliance, Segurança da Informação, Integridade Corporativa e Gestão de Riscos das CONTRATANTES.
+Art. 254.
+A eventual nulidade de qualquer disposição deste Termo não prejudicará a validade das demais cláusulas.
+Art. 255.
+A tolerância quanto ao descumprimento de qualquer obrigação não importará novação ou renúncia de direitos.
+Art. 256.
+As obrigações de confidencialidade, proteção de dados, responsabilidade pelo acesso ao sistema e produção antecipada de provas permanecerão vigentes mesmo após o encerramento da relação contratual, pelo prazo previsto neste Termo ou enquanto houver fundamento legal para sua manutenção.
+Art. 257.
+O PRESTADOR declara que este instrumento foi disponibilizado com antecedência suficiente para sua leitura e compreensão.
+Art. 258.
+O PRESTADOR reconhece que sua adesão decorre de manifestação livre, consciente, informada e voluntária.
+Art. 259.
+As partes reconhecem que o presente Termo possui natureza contratual, declaratória, preventiva, documental e probatória, integrando o conjunto de instrumentos corporativos das CONTRATANTES.
+Art. 260.
+O presente TERMO ÚNICO DE ADESÃO, CIÊNCIA, CONFIDENCIALIDADE, UTILIZAÇÃO DAS PLATAFORMAS, PRODUÇÃO DE PROVAS DIGITAIS, PROTEÇÃO DE DADOS PESSOAIS E RESPONSABILIDADE PELO ACESSO AO SISTEMA passa a integrar, para todos os fins de direito, o Contrato de Prestação de Serviços Autônomos celebrado entre as partes, constituindo documento oficial do Programa Corporativo de Governança, Compliance, Segurança da Informação e Gestão de Riscos da DEX INVEST COMÉRCIO E VAREJO LTDA. e da STAR GOLD SERVIÇOS OPERACIONAIS LTDA.
+________________________________________
+TERMO FINAL DE CIÊNCIA
+O PRESTADOR DE SERVIÇOS AUTÔNOMO, de forma livre, consciente, expressa e inequívoca, declara que:
+I – recebeu previamente acesso integral ao presente Termo e aos documentos corporativos nele mencionados;
+II – realizou a leitura integral de todas as suas cláusulas e disposições;
+III – compreendeu plenamente o conteúdo jurídico, operacional e tecnológico deste instrumento;
+IV – teve oportunidade de formular perguntas e esclarecer dúvidas antes da manifestação de sua vontade;
+V – concorda integralmente com suas disposições;
+VI – autoriza a utilização dos sistemas eletrônicos, plataformas digitais e mecanismos tecnológicos das CONTRATANTES para as finalidades previstas neste Termo;
+VII – reconhece a plena validade jurídica das assinaturas eletrônicas realizadas por meio de plataformas certificadas, certificados digitais, biometria, Face ID, tokens eletrônicos e demais mecanismos de autenticação admitidos pela legislação brasileira;
+VIII – reconhece a validade e a eficácia da produção, preservação e utilização de provas digitais, observados os artigos 369 a 383 do Código de Processo Civil, a Lei Geral de Proteção de Dados Pessoais, o Marco Civil da Internet e a Lei nº 14.063/2020;
+IX – compromete-se a manter absoluto sigilo sobre todas as informações confidenciais, dados pessoais, estratégias empresariais, documentos, sistemas, bancos de dados e demais informações protegidas às quais tiver acesso;
+X – responsabiliza-se pela guarda, utilização e proteção de suas credenciais de acesso, login, senha, Face ID, biometria, token eletrônico e demais mecanismos de autenticação;
+XI – declara ciência de que a utilização das Plataformas Corporativas, dos recursos tecnológicos e dos mecanismos de autenticação possui finalidade exclusiva de Governança Corporativa, Segurança da Informação, Compliance, Gestão de Riscos, Prevenção à Fraude, Proteção de Dados Pessoais, Auditoria, Continuidade Operacional e Exercício Regular de Direitos, não podendo ser interpretada, isoladamente ou em conjunto, como criação de vínculo empregatício, subordinação jurídica, poder disciplinar, fiscalização permanente ou qualquer outro elemento previsto nos artigos 2º e 3º da Consolidação das Leis do Trabalho;
+XII – reconhece que este Termo integra o Contrato de Prestação de Serviços Autônomos e todo o conjunto de políticas corporativas das CONTRATANTES, obrigando-se ao seu integral cumprimento.
+________________________________________
+ASSINATURAS
+DEX INVEST COMÉRCIO E VAREJO LTDA.
+
+STAR GOLD SERVIÇOS OPERACIONAIS LTDA.
+________________________________________
+DECLARAÇÃO FINAL
+As partes reconhecem que o presente instrumento constitui o TERMO ÚNICO DE ADESÃO, CIÊNCIA, CONFIDENCIALIDADE, UTILIZAÇÃO DAS PLATAFORMAS, PRODUÇÃO DE PROVAS DIGITAIS, PROTEÇÃO DE DADOS PESSOAIS E RESPONSABILIDADE PELO ACESSO AO SISTEMA, consolidando em um único documento todas as declarações de ciência, adesão, confidencialidade, proteção de dados, utilização das plataformas, produção antecipada de provas digitais, responsabilidade pelo acesso aos sistemas e validade das assinaturas eletrônicas.
+As partes reconhecem, ainda, que este instrumento integra o Programa Corporativo de Governança, Compliance, Segurança da Informação, Integridade Corporativa e Gestão de Riscos da DEX INVEST COMÉRCIO E VAREJO LTDA. e da STAR GOLD SERVIÇOS OPERACIONAIS LTDA., passando a produzir todos os efeitos jurídicos a partir de sua assinatura, física ou eletrônica, observada a legislação brasileira vigente.

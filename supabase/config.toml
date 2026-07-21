@@ -1,0 +1,4 @@
+project_id = "bmivtbtsfjonlczofxii"
+
+[functions.zapsign]
+verify_jwt = false

@@ -1,0 +1,1 @@
+ALTER TABLE public.signed_receipts ADD COLUMN IF NOT EXISTS worked_dates date[];

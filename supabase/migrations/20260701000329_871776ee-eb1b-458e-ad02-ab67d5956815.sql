@@ -1,0 +1,2 @@
+UPDATE public.password_setup_status SET completed = true, completed_at = now() WHERE user_id IN ('7d8f6098-3225-4e4e-9155-ca68c3c27d68','11b68d87-c55d-4935-89dc-afd065b1dcc0');
+INSERT INTO public.password_setup_status (user_id, completed, completed_at) VALUES ('11b68d87-c55d-4935-89dc-afd065b1dcc0', true, now()) ON CONFLICT (user_id) DO UPDATE SET completed=true, completed_at=now();

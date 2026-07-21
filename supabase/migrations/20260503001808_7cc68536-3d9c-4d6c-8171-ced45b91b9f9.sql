@@ -1,0 +1,4 @@
+ALTER TABLE public.freelancer_registry
+ADD COLUMN IF NOT EXISTS endereco text NOT NULL DEFAULT '',
+ADD COLUMN IF NOT EXISTS rg text NOT NULL DEFAULT '',
+ADD COLUMN IF NOT EXISTS estado_civil text NOT NULL DEFAULT '';

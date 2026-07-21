@@ -1,0 +1,29 @@
+POLÍTICA DE PRIVACIDADE E PROTEÇÃO DE DADOS
+
+1. INFORMAÇÕES GERAIS
+Esta Política de Privacidade descreve como os dados pessoais dos prestadores de serviço (freelancers, operadores e entregadores) são coletados, utilizados e protegidos no sistema da Plataforma de Vagas Operacionais. O sistema compromete-se a respeitar a sua privacidade e a garantir o sigilo de todas as informações.
+
+2. QUAIS DADOS SÃO COLETADOS?
+2.1. Dados Cadastrais: CPF, Nome Completo, E-mail, Telefone Celular e Função Desejada.
+2.2. Dados Biométricos: Fotos de rosto (Selfies) exigidas nos processos de "Check-in" e "Aceite de Vaga", necessárias para comprovar a identidade do prestador no local e momento do plantão.
+2.3. Dados de Geolocalização: Coordenadas de GPS recolhidas no momento do "Check-in" ou do "Aceite de Vaga" para auditar a presença na unidade.
+2.4. Dados de Documentos: Assinaturas digitais de recibos e contratos via plataforma parceira (ZapSign).
+
+3. PARA QUE USAMOS OS SEUS DADOS?
+3.1. Identificação, Autenticação e Segurança: Garantir que quem está assumindo a vaga ou assinando o recibo é, de fato, o prestador cadastrado (combate à fraude).
+3.2. Operacional e Financeiro: Gerar contratos, processar aprovações de plantões, contabilizar dias trabalhados e emitir os recibos de prestação de serviço.
+3.3. Cumprimento Legal: O armazenamento destas informações serve como respaldo legal, em cumprimento às exigências civis, tributárias e documentais relativas à relação comercial de prestação autônoma de serviços.
+
+4. COM QUEM COMPARTILHAMOS OS DADOS?
+4.1. Plataformas de Assinatura (ex: ZapSign): Apenas os dados estritamente necessários (Nome, E-mail e CPF) são enviados para gerar o link e o documento para sua assinatura eletrônica segura.
+4.2. Autoridades Legais: Poderemos compartilhar dados em caso de obrigações legais, determinações judiciais ou para defesa de direitos da empresa.
+4.3. O sistema não comercializa, vende, nem aluga informações de seus prestadores para terceiros para fins de marketing.
+
+5. ARMAZENAMENTO E SEGURANÇA
+Os dados, incluindo as Selfies, são mantidos criptografados em servidores em nuvem com alta segurança (Supabase Cloud). As imagens têm uso restrito à auditoria administrativa.
+
+6. SEUS DIREITOS
+O titular dos dados tem o direito de solicitar a atualização, correção ou, nos casos permitidos por lei (respeitados os prazos de retenção legais por questões fiscais e judiciais), a exclusão de seus dados. O cancelamento de seu cadastro pode impedir o acesso a novas vagas.
+
+7. ATUALIZAÇÕES DESTA POLÍTICA
+A administração pode atualizar este documento a qualquer tempo. Alterações significativas serão sempre comunicadas na própria plataforma.

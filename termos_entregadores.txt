@@ -1,0 +1,42 @@
+TERMOS E CONDIÇÕES DE USO
+PLATAFORMA DE VAGAS OPERACIONAIS
+
+Estes Termos e Condições de Uso (“Termos”) regulam o acesso e a utilização da plataforma tecnológica de gestão de vagas operacionais (“Aplicativo” ou “Plataforma”), disponibilizada por meio de aplicação web aos prestadores de serviço (“Prestador” ou “Prestadores”), de forma autônoma e independente. Nestes Termos, a Plataforma e o Prestador, quando em conjunto, serão denominados “Partes” e, individualmente, “Parte”.
+
+CLÁUSULA PRIMEIRA – SOBRE OS TERMOS E CONDIÇÕES DE USO
+1.1. Toda e qualquer relação entre a Plataforma e o Prestador é regulada pelos presentes Termos, sendo a sua adesão voluntária indispensável para a utilização do sistema e a integração ao compartilhamento da atividade operacional. Ao se cadastrar voluntariamente e utilizar a Plataforma, o Prestador declara ter lido, entendido e aceitado os Termos na íntegra.
+
+CLÁUSULA SEGUNDA – A PLATAFORMA E A NATUREZA DOS SERVIÇOS
+2.1. A Plataforma é um ambiente virtual no qual os Prestadores, interessados em voluntariamente atuar de forma autônoma, podem consultar e aceitar vagas diárias para prestação de serviços nas unidades comerciais cadastradas.
+2.2. A Plataforma atua estritamente como agente/intermediário tecnológico entre as unidades parceiras que necessitam de apoio operacional e os Prestadores autônomos. 
+2.3. OS PRESTADORES RECONHECEM QUE SÃO INDEPENDENTES, ATUANDO POR CONTA PRÓPRIA. O PRESTADOR TEM TOTAL LIBERDADE PARA ACEITAR OU RECUSAR VAGAS DE ACORDO COM A SUA CONVENIÊNCIA.
+2.4. Fica expressamente reconhecido que a relação jurídica estabelecida por estes Termos não cria vínculo empregatício, societário, de associação, mandato, franquia, ou de qualquer outra natureza entre a Plataforma, as unidades parceiras e os Prestadores, inexistindo subordinação, controle de jornada ou pessoalidade, nos moldes da legislação trabalhista (CLT).
+
+CLÁUSULA TERCEIRA – CADASTRO E USO DO SISTEMA
+3.1. Para a utilização da Plataforma, o Prestador deverá fornecer seus dados pessoais (nome, CPF, e-mail e telefone) de forma correta e atualizada.
+3.2. A Plataforma exige a captura de imagem facial (Selfie) e dados de geolocalização (GPS) no momento do aceite da vaga e do check-in, visando unicamente a segurança e a comprovação presencial da prestação do serviço.
+3.3. É de única e exclusiva responsabilidade do Prestador a veracidade das informações apresentadas. A Plataforma poderá, a qualquer momento, desativar temporariamente a conta do Prestador caso haja suspeita de irregularidade, inconsistência de dados ou fraude no aceite de vagas.
+
+CLÁUSULA QUARTA – OBRIGAÇÕES E RESPONSABILIDADES
+4.1. O Prestador obriga-se a:
+i. Cumprir os horários e locais das vagas que aceitou voluntariamente pelo sistema;
+ii. Observar o Código de Conduta e Ética, que pode ser lido na íntegra no link: http://peopledex.lovable.app/codigo_conduta.txt ;
+iii. Não repassar a vaga aceita a quaisquer terceiros;
+iv. Arcar com todas as despesas, custos, ferramentas ou equipamentos não fornecidos pela unidade parceira, além de assumir total responsabilidade sob quaisquer riscos durante o deslocamento;
+v. Atender às normas de trânsito em vigor, caso atue na função de entregador, isentando a Plataforma de qualquer responsabilidade por infrações ou acidentes.
+
+CLÁUSULA QUINTA – VALORES E RECIBOS
+5.1. Os valores a serem pagos pelos plantões serão previamente disponibilizados na Plataforma antes do aceite da vaga pelo Prestador.
+5.2. O pagamento será processado de acordo com a confirmação de presença (check-in e check-out) e a emissão do respectivo Recibo de Prestação de Serviço.
+5.3. O Prestador reconhece que o acesso a novas vagas na Plataforma ficará bloqueado caso existam recibos pendentes de assinatura eletrônica (ZapSign) de plantões anteriores ou pendência na assinatura de seu Contrato, de forma a garantir a regularidade fiscal e documental de ambas as partes.
+
+CLÁUSULA SEXTA – PRIVACIDADE E PROTEÇÃO DE DADOS
+6.1. O Prestador concorda expressamente que o uso da Plataforma implica na coleta e utilização de suas informações e dados, incluindo biometria facial e localização, nos termos previstos na Política de Privacidade, que pode ser lida na íntegra no link: http://peopledex.lovable.app/politica_privacidade.txt .
+
+CLÁUSULA SÉTIMA – INATIVAÇÃO DO CADASTRO
+7.1. Qualquer uma das Partes poderá, a qualquer momento, solicitar o encerramento da relação de uso da Plataforma, sem necessidade de justificativa e sem qualquer ônus.
+7.2. A Plataforma poderá descadastrar ou inativar o acesso do Prestador caso este descumpra as regras de conduta, apresente elevado índice de faltas injustificadas (após aceitar vagas) ou pratique qualquer tipo de fraude na batida de ponto via selfie/GPS.
+
+CLÁUSULA OITAVA – DISPOSIÇÕES GERAIS
+8.1. Estes Termos serão regidos e interpretados de acordo com a legislação da República Federativa do Brasil.
+8.2. O Prestador declara que leu, compreendeu e concorda integralmente com estes Termos, sendo a aceitação condição essencial para o uso da Plataforma.

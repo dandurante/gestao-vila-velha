@@ -1,0 +1,1 @@
+ALTER TABLE public.freelancer_registry ADD COLUMN IF NOT EXISTS role text NOT NULL DEFAULT 'Operador';
