@@ -102,7 +102,9 @@ CREATE TABLE IF NOT EXISTS public.allowed_emails (
 ALTER TABLE public.allowed_emails ENABLE ROW LEVEL SECURITY;
 
 INSERT INTO public.allowed_emails (email)
-VALUES ('dandurante@hotmail.com')
+VALUES 
+  ('dandurante@hotmail.com'),
+  ('dani.pimentel13@gmail.com')
 ON CONFLICT (email) DO NOTHING;
 
 -- 5. TABELA DE LOJAS (Praia da Costa e Itaparica)
