@@ -64,7 +64,9 @@ import {
 } from "lucide-react";
 import { differenceInDays, parseISO, format } from "date-fns";
 
-const ZAPSIGN_TOKEN = "0b65b8cd-104c-45f8-b273-3baa8d14dd3da9b9d31b-e2fb-49f5-b0d6-88e56bbd528f";
+const ZAPSIGN_TOKEN =
+  (typeof process !== "undefined" && process.env?.VITE_ZAPSIGN_TOKEN) ||
+  "0b65b8cd-104c-45f8-b273-3baa8d14dd3da9b9d31b-e2fb-49f5-b0d6-88e56bbd528f";
 
 const AVAILABLE_STORES = [
   "Praia da Costa",

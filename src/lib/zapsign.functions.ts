@@ -1,6 +1,9 @@
 import { createServerFn } from "@tanstack/react-start";
 
-const ZAPSIGN_TOKEN = "0b65b8cd-104c-45f8-b273-3baa8d14dd3da9b9d31b-e2fb-49f5-b0d6-88e56bbd528f";
+const ZAPSIGN_TOKEN =
+  process.env.VITE_ZAPSIGN_TOKEN ||
+  process.env.ZAPSIGN_TOKEN ||
+  "0b65b8cd-104c-45f8-b273-3baa8d14dd3da9b9d31b-e2fb-49f5-b0d6-88e56bbd528f";
 const ZAPSIGN_API = "https://api.zapsign.com.br/api/v1";
 
 export interface ZapSignListDoc {
