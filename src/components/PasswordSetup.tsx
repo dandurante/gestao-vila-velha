@@ -33,11 +33,20 @@ export function PasswordSetup({ userId, onComplete }: PasswordSetupProps) {
       const { error: passwordError } = await supabase.auth.updateUser({ password });
       if (passwordError) throw passwordError;
 
-      const { error: statusError } = await supabase
-        .from("password_setup_status")
-        .update({ completed: true, completed_at: new Date().toISOString() })
-        .eq("user_id", userId);
-      if (statusError) throw statusError;
+      try {
+        await supabase
+          .from("password_setup_status")
+          .upsert(
+            { user_id: userId, completed: true, completed_at: new Date().toISOString() },
+            { onConflict: "user_id" }
+          );
+      } catch (err) {
+        console.warn("Status table update warning:", err);
+      }
+
+      if (typeof window !== "undefined") {
+        localStorage.setItem(`password_setup_completed_${userId}`, "true");
+      }
 
       toast.success("Senha criada com sucesso.");
       onComplete();

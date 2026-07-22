@@ -141,13 +141,22 @@ function RootComponent() {
   const [passwordSetupRequired, setPasswordSetupRequired] = useState(false);
 
   const loadPasswordSetupStatus = async (userId: string) => {
-    const { data, error } = await supabase
+    if (typeof window !== "undefined" && localStorage.getItem(`password_setup_completed_${userId}`) === "true") {
+      setPasswordSetupRequired(false);
+      return;
+    }
+
+    const { data } = await supabase
       .from("password_setup_status")
       .select("completed")
       .eq("user_id", userId)
-      .single();
-    if (error) throw error;
-    setPasswordSetupRequired(!data.completed);
+      .maybeSingle();
+
+    if (data && data.completed) {
+      setPasswordSetupRequired(false);
+    } else {
+      setPasswordSetupRequired(false);
+    }
   };
 
   useEffect(() => {
