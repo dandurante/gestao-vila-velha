@@ -222,8 +222,8 @@ export function Freelancers() {
   }, []);
 
   const [unit, setUnit] = useState<Unit>(UNITS[0]);
-  const [selectedState, setSelectedState] = useState<"SP" | "ES">("SP");
   const [filterUnit, setFilterUnit] = useState<Unit | "all">("all");
+
   const [historyRoleFilter, setHistoryRoleFilter] = useState<"all" | "Operador" | "Entregador">(
     "all",
   );
@@ -685,27 +685,7 @@ export function Freelancers() {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid gap-4 sm:grid-cols-3">
-                <div className="space-y-2">
-                  <Label>Estado</Label>
-                  <Select
-                    value={selectedState}
-                    onValueChange={(v: "SP" | "ES") => {
-                      setSelectedState(v);
-                      // Reseta para a primeira loja do estado selecionado
-                      const firstInState = UNITS.find((u) => UNIT_DETAILS[u].state === v);
-                      if (firstInState) setUnit(firstInState);
-                    }}
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="SP">São Paulo (SP)</SelectItem>
-                      <SelectItem value="ES">Espírito Santo (ES)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="entry-date">Data</Label>
                   <Popover>
@@ -751,7 +731,7 @@ export function Freelancers() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {UNITS.filter((u) => UNIT_DETAILS[u].state === selectedState).map((u) => (
+                      {UNITS.map((u) => (
                         <SelectItem key={u} value={u}>
                           {getUnitDisplayName(u)}
                         </SelectItem>
@@ -759,6 +739,7 @@ export function Freelancers() {
                     </SelectContent>
                   </Select>
                 </div>
+
               </div>
 
               <div className="space-y-3">
