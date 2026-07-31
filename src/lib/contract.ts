@@ -316,11 +316,12 @@ export function generateContractPdf(data: ContractData): { blob: Blob; filename:
   doc.line(marginX, y, marginX + 90, y);
   y += 5;
   doc.setFont("helvetica", "bold");
-  doc.text("STAR GOLD DELIVERY LTDA", marginX, y);
+  doc.text("AJAX SERVIÇOS DE ENTREGA LTDA.", marginX, y);
   y += 5;
   doc.setFont("helvetica", "normal");
   doc.setFontSize(9);
-  doc.text("(Representante Legal – BRUNO GARCIA SANTANELLI)", marginX, y);
+  doc.text("(Representante Legal – DANIEL BARROS DURANTE)", marginX, y);
+
   y += 14;
 
   // Linha CONTRATADA
