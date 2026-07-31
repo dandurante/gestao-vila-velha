@@ -53,11 +53,11 @@ import {
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { generateContractPdf } from "@/lib/contract";
-import { sendToZapSign } from "@/lib/zapsign";
+import { sendToZapSign, getZapSignDoc, ZAPSIGN_TOKEN } from "@/lib/zapsign";
 import { CurrencyInput } from "@/components/CurrencyInput";
 import { ZapSignSendModal } from "@/components/ZapSignSendModal";
 
-const ZAPSIGN_TOKEN = "0b65b8cd-104c-45f8-b273-3baa8d14dd3da9b9d31b-e2fb-49f5-b0d6-88e56bbd528f";
+
 
 import { UNITS, getUnitDisplayName } from "@/lib/units";
 
@@ -204,6 +204,45 @@ export function FreelancerRegistry() {
     );
   };
 
+  const syncAndCheckActiveContracts = async (cpf: string, name: string) => {
+    const { data: existingContracts } = await supabase
+      .from("contracts")
+      .select("id, zapsign_token, status")
+      .or(`freelancer_cpf.eq.${cpf},freelancer_name.ilike.${name}`)
+      .in("status", ["assinado", "pendente"]);
+
+    if (!existingContracts || existingContracts.length === 0) return [];
+
+    const activeContracts: typeof existingContracts = [];
+
+    for (const c of existingContracts) {
+      if (!c.zapsign_token) {
+        activeContracts.push(c);
+        continue;
+      }
+      try {
+        const doc = await getZapSignDoc(ZAPSIGN_TOKEN, c.zapsign_token);
+        const status = (doc?.status || "").toLowerCase();
+        if (status === "canceled" || status === "deleted" || status === "recusado") {
+          await supabase.from("contracts").update({ status: "cancelado" }).eq("id", c.id);
+        } else if (status === "signed") {
+          await supabase
+            .from("contracts")
+            .update({ status: "assinado", signed_at: new Date().toISOString() })
+            .eq("id", c.id);
+          activeContracts.push(c);
+        } else {
+          activeContracts.push(c);
+        }
+      } catch (err: any) {
+        // Se deu erro ao buscar na ZapSign (ex: 404 documento apagado), marca como cancelado
+        await supabase.from("contracts").update({ status: "cancelado" }).eq("id", c.id);
+      }
+    }
+
+    return activeContracts;
+  };
+
   const handleGenerateOperatorContract = async () => {
     const op = registry.find((r) => r.id === contractOperatorId);
     if (!op) {
@@ -227,20 +266,12 @@ export function FreelancerRegistry() {
     try {
       setGeneratingContract(true);
 
-      // Rule 6: Check for active contracts for this CPF
-      const { data: existingContracts, error: contractErr } = await supabase
-        .from("contracts")
-        .select("id")
-        .eq("freelancer_cpf", op.cpf)
-        .in("status", ["assinado", "pendente"]);
+      // Consulta o status real na ZapSign e limpa automaticamente contratos excluídos/cancelados
+      const activeContracts = await syncAndCheckActiveContracts(op.cpf, op.nome);
 
-      if (contractErr) {
-        console.error("Erro ao consultar contratos existentes:", contractErr);
-      }
-
-      if (existingContracts && existingContracts.length > 0) {
+      if (activeContracts.length > 0) {
         const replaceOk = window.confirm(
-          `Já existe um contrato registrado para ${op.nome}. Deseja cancelar o contrato anterior e gerar um novo contrato substituto?`
+          `Existe um contrato ativo na ZapSign para ${op.nome}. Deseja cancelar o contrato anterior e gerar um novo contrato substituto?`,
         );
         if (!replaceOk) {
           setGeneratingContract(false);
@@ -251,8 +282,9 @@ export function FreelancerRegistry() {
         await supabase
           .from("contracts")
           .update({ status: "cancelado" })
-          .in("id", existingContracts.map((c) => c.id));
+          .in("id", activeContracts.map((c) => c.id));
       }
+
 
 
       const selectedUnit = (contractUnit || "Praia da Costa") as UnitKey;
@@ -380,20 +412,11 @@ export function FreelancerRegistry() {
       return;
     }
     try {
-      // Rule 6: Check for active contracts for this CPF
-      const { data: existingContracts, error: contractErr } = await supabase
-        .from("contracts")
-        .select("id")
-        .eq("freelancer_cpf", f.cpf)
-        .in("status", ["assinado", "pendente"]);
+      const activeContracts = await syncAndCheckActiveContracts(f.cpf, f.nome);
 
-      if (contractErr) {
-        console.error("Erro ao consultar contratos existentes:", contractErr);
-      }
-
-      if (existingContracts && existingContracts.length > 0) {
+      if (activeContracts.length > 0) {
         const replaceOk = window.confirm(
-          `Já existe um contrato registrado para o entregador ${f.nome}. Deseja cancelar o contrato anterior e enviar o novo contrato substituto?`
+          `Existe um contrato ativo na ZapSign para o entregador ${f.nome}. Deseja cancelar o contrato anterior e enviar o novo contrato substituto?`
         );
         if (!replaceOk) return;
 
@@ -401,8 +424,9 @@ export function FreelancerRegistry() {
         await supabase
           .from("contracts")
           .update({ status: "cancelado" })
-          .in("id", existingContracts.map((c) => c.id));
+          .in("id", activeContracts.map((c) => c.id));
       }
+
 
 
       toast.info("Gerando contrato e enviando para ZapSign...");
