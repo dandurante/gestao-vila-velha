@@ -15,7 +15,8 @@ import { Label } from "@/components/ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
-import { useFreelancerRegistry } from "@/hooks/useFreelancerRegistry";
+import { useFreelancerRegistry, findRegisteredFreelancer } from "@/hooks/useFreelancerRegistry";
+
 import { generateReceiptPdf } from "@/lib/receiptPdf";
 import {
   Select,
@@ -75,8 +76,9 @@ export function ReceiptModal({
   }, [open, initialUnit, initialDateRange]);
 
   const freelancerInfo = useMemo(() => {
-    return registry.find((f) => f.nome === freelancerName && f.pix === pix);
+    return findRegisteredFreelancer(registry, freelancerName, pix);
   }, [registry, freelancerName, pix]);
+
 
   const availableUnits = useMemo(() => {
     if (!startDate || !endDate) return [];

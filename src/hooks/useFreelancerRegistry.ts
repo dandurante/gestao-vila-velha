@@ -78,3 +78,55 @@ export function useFreelancerRegistry() {
     isLoaded: !isLoading,
   };
 }
+
+function normName(s: string | null | undefined): string {
+  return (s || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim()
+    .replace(/\s+/g, " ")
+    .toLowerCase();
+}
+
+function normDigits(s: string | null | undefined): string {
+  return (s || "").replace(/\D/g, "");
+}
+
+export function findRegisteredFreelancer(
+  registry: RegisteredFreelancer[],
+  name: string,
+  pix?: string,
+): RegisteredFreelancer | undefined {
+  const targetName = normName(name);
+  if (!targetName) return undefined;
+
+  const pixDigits = normDigits(pix);
+  const targetPixNorm = (pix || "").trim().toLowerCase();
+
+  // 1. Tenta por Nome exato (normalizado) + Pix (normalizado ou apenas dígitos)
+  let found = registry.find((r) => {
+    if (normName(r.nome) !== targetName) return false;
+    if (!pix) return true;
+    const rPixNorm = (r.pix || "").trim().toLowerCase();
+    const rPixDigits = normDigits(r.pix);
+    return rPixNorm === targetPixNorm || (pixDigits.length >= 8 && rPixDigits === pixDigits);
+  });
+
+  if (found) return found;
+
+  // 2. Se não encontrou com Pix estrito, tenta por Nome (normalizado)
+  found = registry.find((r) => normName(r.nome) === targetName);
+  if (found) return found;
+
+  // 3. Se não encontrou por Nome, tenta por Pix / CPF (apenas dígitos)
+  if (pixDigits.length >= 8) {
+    found = registry.find((r) => {
+      const rPixDigits = normDigits(r.pix);
+      const rCpfDigits = normDigits(r.cpf);
+      return rPixDigits === pixDigits || rCpfDigits === pixDigits;
+    });
+  }
+
+  return found;
+}
+

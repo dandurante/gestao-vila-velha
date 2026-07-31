@@ -14,7 +14,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { generateReceiptPdf, type ReceiptRow } from "@/lib/receiptPdf";
 import { sendToZapSign, ZAPSIGN_TOKEN } from "@/lib/zapsign";
-import { useFreelancerRegistry } from "@/hooks/useFreelancerRegistry";
+import { useFreelancerRegistry, findRegisteredFreelancer } from "@/hooks/useFreelancerRegistry";
+
 import { supabase } from "@/integrations/supabase/client";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -121,9 +122,8 @@ export function BulkReceiptsModal({
       next[i] = { ...it, status: { kind: "sending" } };
       setItems([...next]);
 
-      const reg = registry.find(
-        (r) => r.nome.trim().toLowerCase() === it.name.trim().toLowerCase() && r.pix === it.pix,
-      );
+      const reg = findRegisteredFreelancer(registry, it.name, it.pix);
+
       if (!reg) {
         next[i] = {
           ...it,
