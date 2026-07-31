@@ -414,6 +414,7 @@ export function generateOperatorContractPdf(data: OperatorContractData): {
   footer(doc, pageW, pageH, pageNum);
 
   const blob = doc.output("blob");
-  const filename = `Contrato_Operador_${data.nome.replace(/\s+/g, "_")}_${data.unit.replace(/[^a-zA-Z0-9]+/g, "_")}.pdf`;
+  const filename = `Contrato_Operador_${data.nome.replace(/\s+/g, "_")}.pdf`;
   return { blob, filename };
+
 }

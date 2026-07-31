@@ -136,8 +136,8 @@ export function generateReceiptPdf(params: {
   const startISO = format(startDate, "yyyy-MM-dd");
   const endISO = format(endDate, "yyyy-MM-dd");
   const safeName = freelancer.nome.replace(/\s+/g, "_");
-  const safeUnit = unit.replace(/[^a-zA-Z0-9]+/g, "_");
-  const filename = `Recibo_${safeName}_${safeUnit}_${startISO}_a_${endISO}.pdf`;
+  const filename = `Recibo_${safeName}_${startISO}_a_${endISO}.pdf`;
+
 
   return {
     blob: doc.output("blob"),
