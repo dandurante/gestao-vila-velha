@@ -11,7 +11,9 @@ import {
   RefreshCw,
   ArrowLeft,
   Search,
+  Trash2,
 } from "lucide-react";
+
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -92,7 +94,23 @@ export function SignedReceiptsReport() {
     },
   });
 
+  const deleteReceiptMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("signed_receipts").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["signed_receipts"] });
+      queryClient.invalidateQueries({ queryKey: ["signed_receipts_all"] });
+      toast.success("Recibo removido. A reemissão para estas datas foi liberada.");
+    },
+    onError: (err: any) => {
+      toast.error(err.message || "Erro ao remover recibo.");
+    },
+  });
+
   const { data: allEntries = [] } = useQuery({
+
     queryKey: ["freelancers_all"],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -532,16 +550,36 @@ export function SignedReceiptsReport() {
                           </Badge>
                         </TableCell>
                         <TableCell className="text-right">
-                          {r.signed_file_url ? (
-                            <Button variant="ghost" size="sm" asChild>
-                              <a href={r.signed_file_url} target="_blank" rel="noopener noreferrer">
-                                <ExternalLink className="h-4 w-4" />
-                              </a>
+                          <div className="flex items-center justify-end gap-1">
+                            {r.signed_file_url ? (
+                              <Button variant="ghost" size="sm" asChild>
+                                <a href={r.signed_file_url} target="_blank" rel="noopener noreferrer">
+                                  <ExternalLink className="h-4 w-4" />
+                                </a>
+                              </Button>
+                            ) : (
+                              <span className="text-xs text-muted-foreground">-</span>
+                            )}
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
+                              title="Remover recibo para liberar nova emissão"
+                              onClick={() => {
+                                if (
+                                  confirm(
+                                    `Remover recibo de ${r.freelancer_name}? Isso liberará a emissão de um novo recibo para este período.`,
+                                  )
+                                ) {
+                                  deleteReceiptMutation.mutate(r.id);
+                                }
+                              }}
+                            >
+                              <Trash2 className="h-4 w-4" />
                             </Button>
-                          ) : (
-                            <span className="text-xs text-muted-foreground">-</span>
-                          )}
+                          </div>
                         </TableCell>
+
                       </TableRow>
                     ))}
                   </TableBody>
