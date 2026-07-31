@@ -52,13 +52,8 @@ export function generateReceiptPdf(params: {
   }
 
   const isEntregador = freelancer.role === "Entregador";
-  const company = isEntregador
-    ? {
-        ...baseCompany,
-        razaoSocial: "Star Gold Delivery Ltda.",
-        cnpj: "61.011.091/0001-55",
-      }
-    : baseCompany;
+  const company = baseCompany;
+
 
   const total = periodRows.reduce(
     (acc, r) => acc + Number(r.daily_rate) + Number(r.deliveries_total || 0),

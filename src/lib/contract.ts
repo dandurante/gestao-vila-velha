@@ -121,8 +121,9 @@ export function generateContractPdf(data: ContractData): { blob: Blob; filename:
 
   // Qualificação CONTRATANTE
   writeParagraph(
-    "STAR GOLD DELIVERY LTDA, pessoa jurídica de direito privado, devidamente inscrita sob CNPJ nº 61.011.091/0001-55, com sede na Rua Loefgreen, nº 1448, Sala B, Bairro da Vila Clementina, Município de São Paulo, Estado de São Paulo, CEP: 04040-001, neste ato representada por seu sócio BRUNO GARCIA SANTANELLI, doravante designada simplesmente CONTRATANTE;",
+    "AJAX SERVIÇOS DE ENTREGA LTDA., pessoa jurídica de direito privado, devidamente inscrita sob CNPJ nº 52.311.860/0001-40, com sede na Rua General Osório, nº 127, Edif. A Gazeta, sala 902, Centro, Vitória/ES, CEP: 29010-030, neste ato representada por seu sócio DANIEL BARROS DURANTE, brasileiro, casado, portador do CPF nº 839.773.921-15, doravante designada simplesmente CONTRATANTE;",
   );
+
 
   // Qualificação CONTRATADA preenchida
   writeParagraph(

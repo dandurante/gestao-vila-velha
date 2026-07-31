@@ -32,7 +32,7 @@ export const OPERATOR_UNITS: Record<UnitKey, UnitContract> = {
     municipio: "Vila Velha",
     uf: "Espírito Santo",
     cep: "29010-030",
-    representante: "DANIEL SILVA DE SOUSA",
+    representante: "DANIEL BARROS DURANTE",
   },
   "Praia da Costa": {
     razaoSocial: "AJAX SERVIÇOS DE ENTREGA LTDA.",
@@ -42,7 +42,7 @@ export const OPERATOR_UNITS: Record<UnitKey, UnitContract> = {
     municipio: "Vila Velha",
     uf: "Espírito Santo",
     cep: "29010-030",
-    representante: "DANIEL SILVA DE SOUSA",
+    representante: "DANIEL BARROS DURANTE",
   },
 };
 
@@ -150,8 +150,9 @@ export function generateOperatorContractPdf(data: OperatorContractData): {
 
   // Qualificação CONTRATANTE
   p(
-    `${loja.razaoSocial.toUpperCase()}, pessoa jurídica de direito privado, devidamente inscrita sob CNPJ nº ${loja.cnpj}, com sede na ${loja.endereco}, Bairro ${loja.bairro}, Município de ${loja.municipio}, Estado de ${loja.uf}, CEP: ${loja.cep}, neste ato representada por seu sócio ${loja.representante}, brasileiro, casado, portador do CPF nº 094.981.707-46, doravante designada simplesmente CONTRATANTE;`,
+    `${loja.razaoSocial.toUpperCase()}, pessoa jurídica de direito privado, devidamente inscrita sob CNPJ nº ${loja.cnpj}, com sede na ${loja.endereco}, Bairro ${loja.bairro}, Município de ${loja.municipio}, Estado de ${loja.uf}, CEP: ${loja.cep}, neste ato representada por seu sócio ${loja.representante}, brasileiro, casado, portador do CPF nº 839.773.921-15, doravante designada simplesmente CONTRATANTE;`,
   );
+
 
   // Qualificação CONTRATADA(O)
   const civil = (data.estadoCivil || "solteiro(a)").toLowerCase();
