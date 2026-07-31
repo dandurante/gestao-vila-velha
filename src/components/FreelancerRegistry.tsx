@@ -210,10 +210,6 @@ export function FreelancerRegistry() {
       toast.error("Selecione o prestador de serviço.");
       return;
     }
-    if (!contractUnit) {
-      toast.error("Selecione a loja.");
-      return;
-    }
     if (!contractDailyRate || contractDailyRate <= 0) {
       toast.error("Informe o valor da diária.");
       return;
@@ -260,13 +256,14 @@ export function FreelancerRegistry() {
         return;
       }
 
+      const selectedUnit = (contractUnit || "Praia da Costa") as UnitKey;
       const { blob, filename } = generateOperatorContractPdf({
         nome: op.nome,
         cpf: op.cpf,
         rg: op.rg,
         endereco: op.endereco,
         estadoCivil: op.estado_civil,
-        unit: contractUnit as UnitKey,
+        unit: selectedUnit,
         dailyRate: contractDailyRate,
       });
       setZapBlob(blob);
@@ -275,9 +272,10 @@ export function FreelancerRegistry() {
       setZapSigner(op.nome);
       setZapCpf(op.cpf);
       setZapPhone(op.telefone || "");
-      setZapUnit(contractUnit);
+      setZapUnit(selectedUnit);
       setContractDialogOpen(false);
       setZapOpen(true);
+
     } catch (err: any) {
       toast.error(err.message || "Erro ao gerar contrato.");
     } finally {
@@ -294,77 +292,6 @@ export function FreelancerRegistry() {
     },
   });
 
-  // Query to get all welcome terms consents
-  const { data: welcomeConsents = [], refetch: refetchWelcomeConsents } = useQuery({
-    queryKey: ["vagas_welcome_consent_all"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("vagas_welcome_consent")
-        .select("id, freelancer_id, email, accepted_at, sent_at")
-        .order("sent_at", { ascending: false });
-      if (error) throw error;
-      return data;
-    },
-  });
-
-  const [sendingEmailId, setSendingEmailId] = useState<string | null>(null);
-  const [sendingBulk, setSendingBulk] = useState(false);
-
-  const sendSingleTermsEmail = async (freelancer: RegisteredFreelancer) => {
-    if (!freelancer.email || !freelancer.email.includes("@")) {
-      toast.error("Este prestador de serviço não possui um e-mail válido.");
-      return;
-    }
-    setSendingEmailId(freelancer.id);
-    try {
-      const { sendWelcomeEmailFn } = await import("@/lib/email.functions");
-      await sendWelcomeEmailFn({
-        data: {
-          freelancerId: freelancer.id,
-          email: freelancer.email.trim().toLowerCase(),
-          nome: freelancer.nome,
-        }
-      });
-      toast.success(`E-mail de termos enviado com sucesso para ${freelancer.nome}!`);
-      refetchWelcomeConsents();
-    } catch (err: any) {
-      console.error(err);
-      toast.error(err.message || "Erro ao disparar e-mail de termos.");
-    } finally {
-      setSendingEmailId(null);
-    }
-  };
-
-  const sendBulkTermsEmails = async (pendingFreelancers: RegisteredFreelancer[]) => {
-    if (pendingFreelancers.length === 0) {
-      toast.info("Não há prestadores pendentes para receber os termos por e-mail.");
-      return;
-    }
-    setSendingBulk(true);
-    try {
-      const { sendBulkWelcomeEmailsFn } = await import("@/lib/email.functions");
-      const list = pendingFreelancers.map((f) => ({
-        id: f.id,
-        email: f.email,
-        nome: f.nome,
-      }));
-      
-      const res = await sendBulkWelcomeEmailsFn({
-        data: { freelancers: list }
-      });
-      
-      const successCount = res.results.filter((r: any) => r.success).length;
-      const failCount = res.results.filter((r: any) => !r.success).length;
-      
-      toast.success(`Disparo concluído: ${successCount} enviados com sucesso, ${failCount} falhas.`);
-      refetchWelcomeConsents();
-    } catch (err: any) {
-      console.error(err);
-      toast.error(err.message || "Erro ao disparar e-mails em lote.");
-    } finally {
-      setSendingBulk(false);
-    }
-  };
 
   const addEmailMutation = useMutation({
     mutationFn: async (email: string) => {
@@ -609,24 +536,6 @@ export function FreelancerRegistry() {
         const newFreelancer = await addFreelancer(payload);
         toast.success("Prestador de Serviço cadastrado.");
         
-        // Auto-send welcome terms email if email is provided
-        if (payload.email && payload.email.includes("@") && newFreelancer?.id) {
-          try {
-            const { sendWelcomeEmailFn } = await import("@/lib/email.functions");
-            await sendWelcomeEmailFn({
-              data: {
-                freelancerId: newFreelancer.id,
-                email: payload.email.trim().toLowerCase(),
-                nome: payload.nome,
-              }
-            });
-            toast.info(`E-mail de termos enviado automaticamente para ${payload.nome}.`);
-            refetchWelcomeConsents();
-          } catch (emailErr) {
-            console.error("Erro ao enviar e-mail automático de boas-vindas:", emailErr);
-          }
-        }
-
         if (role === "Entregador") {
           await sendDeliveryContract(payload);
         }
@@ -641,36 +550,6 @@ export function FreelancerRegistry() {
   const isAdmin = isRoleAdmin || hasFullAccess;
 
   if (!isLoaded || rolesLoading) return null;
-
-  // Mapear os status de consentimento dos termos
-  const consentMap = new Map<string, { status: "Aceito" | "Pendente" | "Não Enviado"; acceptedAt?: string; sentAt?: string }>();
-  for (const c of welcomeConsents) {
-    const fid = c.freelancer_id;
-    const emailKey = c.email ? c.email.trim().toLowerCase() : "";
-    const currentStatus = c.accepted_at ? "Aceito" : "Pendente";
-    
-    const updateMap = (key: string) => {
-      const existing = consentMap.get(key);
-      if (!existing || (existing.status !== "Aceito" && currentStatus === "Aceito")) {
-        consentMap.set(key, {
-          status: currentStatus,
-          acceptedAt: c.accepted_at || undefined,
-          sentAt: c.sent_at || undefined
-        });
-      }
-    };
-
-    if (fid) updateMap(fid);
-    if (emailKey) updateMap(emailKey);
-  }
-
-  // Filtrar prestadores pendentes de aceite para o botão em lote
-  const pendingList = registry.filter((r) => {
-    if (r.active === false) return false;
-    if (!r.email || !r.email.includes("@")) return false;
-    const consent = consentMap.get(r.id) || (r.email ? consentMap.get(r.email.trim().toLowerCase()) : null);
-    return !consent || consent.status !== "Aceito";
-  });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/40">
@@ -716,7 +595,7 @@ export function FreelancerRegistry() {
                   <DialogHeader>
                     <DialogTitle>Gerar Contrato de Operador</DialogTitle>
                     <DialogDescription>
-                      Selecione o prestador (Operador) e a loja. Disponível apenas para Operadores.
+                      Selecione o prestador (Operador) e informe o valor da diária.
                     </DialogDescription>
                   </DialogHeader>
                   <div className="space-y-4 py-2">
@@ -738,24 +617,6 @@ export function FreelancerRegistry() {
                       </Select>
                     </div>
                     <div className="space-y-2">
-                      <Label>Loja</Label>
-                      <Select
-                        value={contractUnit}
-                        onValueChange={(v) => setContractUnit(v as UnitKey)}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Selecione a loja" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {OPERATOR_UNIT_KEYS.map((u) => (
-                            <SelectItem key={u} value={u}>
-                              {u}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="space-y-2">
                       <Label>Valor da Diária</Label>
                       <CurrencyInput
                         value={contractDailyRate}
@@ -763,6 +624,7 @@ export function FreelancerRegistry() {
                       />
                     </div>
                   </div>
+
                   <DialogFooter>
                     <Button variant="ghost" onClick={() => setContractDialogOpen(false)}>
                       Cancelar
@@ -926,22 +788,6 @@ export function FreelancerRegistry() {
                     Filtre por cargo ou loja onde já houve lançamento.
                   </CardDescription>
                 </div>
-                {pendingList.length > 0 && (
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="border-emerald-500/30 text-emerald-600 hover:text-emerald-500 hover:bg-emerald-500/10 gap-2 self-start sm:self-auto"
-                    disabled={sendingBulk}
-                    onClick={() => sendBulkTermsEmails(pendingList)}
-                  >
-                    {sendingBulk ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    ) : (
-                      <Mail className="h-4 w-4" />
-                    )}
-                    Enviar Termos para Pendentes ({pendingList.length})
-                  </Button>
-                )}
               </CardHeader>
               <CardContent className="px-0 sm:px-6">
                 <div className="mb-4 grid gap-3 px-4 sm:grid-cols-2 sm:px-0">
@@ -986,7 +832,7 @@ export function FreelancerRegistry() {
                         <TableHead className="hidden md:table-cell">E-mail</TableHead>
                         <TableHead className="hidden lg:table-cell">Telefone</TableHead>
                         <TableHead>Status</TableHead>
-                        <TableHead>Termos</TableHead>
+
                         <TableHead className="w-24 text-right">Ações</TableHead>
                       </TableRow>
                     </TableHeader>
@@ -1011,7 +857,7 @@ export function FreelancerRegistry() {
                         if (filteredRegistry.length === 0) {
                           return (
                             <TableRow>
-                              <TableCell colSpan={9} className="text-center text-muted-foreground">
+                              <TableCell colSpan={8} className="text-center text-muted-foreground">
                                 Nenhum prestador de serviço encontrado.
                               </TableCell>
                             </TableRow>
@@ -1061,43 +907,6 @@ export function FreelancerRegistry() {
                               >
                                 {r.active !== false ? "Ativo" : "Inativo"}
                               </Button>
-                            </TableCell>
-                            <TableCell>
-                              {(() => {
-                                const consent = consentMap.get(r.id) || (r.email ? consentMap.get(r.email.trim().toLowerCase()) : null);
-                                const status = consent ? consent.status : "Não Enviado";
-                                return (
-                                  <div className="flex items-center gap-2">
-                                    <span
-                                      className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold ${
-                                        status === "Aceito"
-                                          ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-400"
-                                          : status === "Pendente"
-                                          ? "bg-amber-100 text-amber-800 dark:bg-amber-950/30 dark:text-amber-400"
-                                          : "bg-slate-100 text-slate-800 dark:bg-slate-900/30 dark:text-slate-400"
-                                      }`}
-                                    >
-                                      {status}
-                                    </span>
-                                    {status !== "Aceito" && r.email && r.email.includes("@") && (
-                                      <Button
-                                        variant="ghost"
-                                        size="icon"
-                                        className="h-6 w-6 text-muted-foreground hover:text-foreground cursor-pointer"
-                                        disabled={sendingEmailId === r.id || sendingBulk}
-                                        onClick={() => sendSingleTermsEmail(r)}
-                                        title={status === "Pendente" ? "Reenviar e-mail de termos" : "Enviar e-mail de termos"}
-                                      >
-                                        {sendingEmailId === r.id ? (
-                                          <Loader2 className="h-3 w-3 animate-spin" />
-                                        ) : (
-                                          <Mail className="h-3 w-3" />
-                                        )}
-                                      </Button>
-                                    )}
-                                  </div>
-                                );
-                              })()}
                             </TableCell>
                             <TableCell className="text-right">
                               <div className="flex justify-end gap-1">

@@ -8,8 +8,9 @@ interface ContractData {
   estadoCivil: string;
 }
 
-const HEADER = "STAR GOLD DELIVERY LTDA";
-const SUBHEADER = "CNPJ: 61.011.091/0001-55";
+const HEADER = "AJAX SERVIÇOS DE ENTREGA LTDA.";
+const SUBHEADER = "CNPJ: 52.311.860/0001-40";
+
 
 function genderOf(estadoCivil: string): { nacionalidade: string; civil: string; portador: string } {
   // O cadastro não tem sexo; usamos o próprio "Solteiro(a)" como veio.

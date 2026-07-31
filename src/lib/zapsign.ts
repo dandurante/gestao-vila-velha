@@ -2,6 +2,12 @@ import { supabase } from "@/integrations/supabase/client";
 
 const ZAPSIGN_API = "https://api.zapsign.com.br/api/v1";
 
+export const ZAPSIGN_TOKEN =
+  import.meta.env.VITE_ZAPSIGN_TOKEN ||
+  "c345c6d8-54df-4c4d-ac6c-b7b59d4079afc1da3397-0af8-47f5-afe8-a38d02b201e1";
+
+
+
 export interface ZapSignSigner {
   token: string;
   sign_url: string;

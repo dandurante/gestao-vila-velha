@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { sendToZapSign, getZapSignDoc, type ZapSignDocResult } from "@/lib/zapsign";
+import { sendToZapSign, getZapSignDoc, ZAPSIGN_TOKEN, type ZapSignDocResult } from "@/lib/zapsign";
 import { supabase } from "@/integrations/supabase/client";
 
 export interface ReceiptMetadata {
@@ -37,7 +37,6 @@ interface ZapSignSendModalProps {
   docType?: "receipt" | "contract";
 }
 
-const ZAPSIGN_TOKEN = "0b65b8cd-104c-45f8-b273-3baa8d14dd3da9b9d31b-e2fb-49f5-b0d6-88e56bbd528f";
 
 export function ZapSignSendModal({
   open,

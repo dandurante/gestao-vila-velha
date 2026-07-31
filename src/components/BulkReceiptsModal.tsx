@@ -13,14 +13,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { generateReceiptPdf, type ReceiptRow } from "@/lib/receiptPdf";
-import { sendToZapSign } from "@/lib/zapsign";
+import { sendToZapSign, ZAPSIGN_TOKEN } from "@/lib/zapsign";
 import { useFreelancerRegistry } from "@/hooks/useFreelancerRegistry";
 import { supabase } from "@/integrations/supabase/client";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { findOverlappingReceipts } from "@/lib/receiptOverlap";
 
-const ZAPSIGN_TOKEN = "0b65b8cd-104c-45f8-b273-3baa8d14dd3da9b9d31b-e2fb-49f5-b0d6-88e56bbd528f";
 
 export interface BulkSelectedPerson {
   name: string;

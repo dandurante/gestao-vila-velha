@@ -10,19 +10,7 @@ export interface OperatorContractData {
   dailyRate: number;
 }
 
-export type UnitKey =
-  | "Jabaquara"
-  | "Campo Belo"
-  | "V. Clementino"
-  | "V. GOPOUVA"
-  | "P. MANDAQUI"
-  | "Aclimação"
-  | "Pinheiros"
-  | "GRU"
-  | "J. Camburi"
-  | "P. Canto"
-  | "Serra"
-  | "Boali";
+export type UnitKey = "Itaparica" | "Praia da Costa";
 
 interface UnitContract {
   razaoSocial: string;
@@ -36,129 +24,30 @@ interface UnitContract {
 }
 
 export const OPERATOR_UNITS: Record<UnitKey, UnitContract> = {
-  Jabaquara: {
-    razaoSocial: "Dex Invest Comercio E Varejo LTDA",
-    cnpj: "52.912.647/0002-74",
-    endereco: "Avenida Doutor Luis Rocha Miranda, 164",
-    bairro: "Jabaquara",
-    municipio: "São Paulo",
-    uf: "São Paulo",
-    cep: "04344-010",
-    representante: "DANIEL SILVA DE SOUSA",
-  },
-  "Campo Belo": {
-    razaoSocial: "Dex Invest Comercio E Varejo LTDA",
-    cnpj: "52.912.647/0003-55",
-    endereco: "Rua Dr Jesuino Maciel, 1186",
-    bairro: "Campo Belo",
-    municipio: "São Paulo",
-    uf: "São Paulo",
-    cep: "04615-004",
-    representante: "DANIEL SILVA DE SOUSA",
-  },
-  "V. Clementino": {
-    razaoSocial: "Dex Invest Comercio E Varejo LTDA",
-    cnpj: "52.912.647/0001-93",
-    endereco: "Rua Loefgren, 1448",
-    bairro: "Vila Clementino",
-    municipio: "São Paulo",
-    uf: "São Paulo",
-    cep: "04040-001",
-    representante: "DANIEL SILVA DE SOUSA",
-  },
-  "V. GOPOUVA": {
-    razaoSocial: "Dex Invest Comercio E Varejo LTDA",
-    cnpj: "52.912.647/0004-36",
-    endereco: "Rua Cônego Valadao, 939",
-    bairro: "Vila Gopoúva",
-    municipio: "Guarulhos",
-    uf: "São Paulo",
-    cep: "07040-000",
-    representante: "DANIEL SILVA DE SOUSA",
-  },
-  "P. MANDAQUI": {
-    razaoSocial: "Dex Invest Comercio E Varejo LTDA",
-    cnpj: "52.912.647/0005-17",
-    endereco: "Avenida Santa Inês, 1048",
-    bairro: "Parque Mandaqui",
-    municipio: "São Paulo",
-    uf: "São Paulo",
-    cep: "02415-001",
-    representante: "DANIEL SILVA DE SOUSA",
-  },
-  Aclimação: {
-    razaoSocial: "Dex Invest Comercio E Varejo LTDA",
-    cnpj: "52.912.647/0009-40",
-    endereco: "Avenida da Aclimação, 101",
-    bairro: "Aclimação",
-    municipio: "São Paulo",
-    uf: "São Paulo",
-    cep: "01531-001",
-    representante: "DANIEL SILVA DE SOUSA",
-  },
-  Pinheiros: {
-    razaoSocial: "Dex Invest Comercio E Varejo LTDA",
-    cnpj: "52.912.647/0008-60",
-    endereco: "Rua Inácio Pereira da Rocha, 511",
-    bairro: "Pinheiros",
-    municipio: "São Paulo",
-    uf: "São Paulo",
-    cep: "05432-011",
-    representante: "DANIEL SILVA DE SOUSA",
-  },
-  GRU: {
-    razaoSocial: "Dex Invest Comercio E Varejo LTDA",
-    cnpj: "52.912.647/0006-06",
-    endereco: "Rodovia Hélio Smith, S/N",
-    bairro: "-",
-    municipio: "Guarulhos",
-    uf: "São Paulo",
-    cep: "07190-100",
-    representante: "DANIEL SILVA DE SOUSA",
-  },
-  "J. Camburi": {
-    razaoSocial: "JC ALIMENTOS LTDA.",
-    cnpj: "57.440.222/0001-42",
-    endereco: "Rua Gelu Vervloet Dos Santos, edifício Norte Sul Tower, Loja 01",
-    bairro: "Jardim Camburi",
-    municipio: "Vitória",
+  Itaparica: {
+    razaoSocial: "AJAX SERVIÇOS DE ENTREGA LTDA.",
+    cnpj: "52.311.860/0001-40",
+    endereco: "Rua General Osório, nº 127, Edif. A Gazeta, sala 902, Centro",
+    bairro: "Praia de Itaparica",
+    municipio: "Vila Velha",
     uf: "Espírito Santo",
-    cep: "29090-100",
+    cep: "29010-030",
     representante: "DANIEL SILVA DE SOUSA",
   },
-  "P. Canto": {
-    razaoSocial: "PC ALIMENTOS LTDA.",
-    cnpj: "57.439.562/0001-53",
-    endereco: "Avenida Rio Branco, 1777, lojas 04 e 05",
-    bairro: "Praia do Canto",
-    municipio: "Vitória",
-    uf: "Espírito Santo",
-    cep: "29055-642",
-    representante: "DANIEL SILVA DE SOUSA",
-  },
-  Serra: {
-    razaoSocial: "SR ALIMENTAÇÃO LTDA",
-    cnpj: "57.438.869/0001-30",
-    endereco: "Avenida Primeira Avenida, 60",
-    bairro: "Parque Residencial Laranjeiras",
-    municipio: "Serra",
-    uf: "Espírito Santo",
-    cep: "29165-155",
-    representante: "DANIEL SILVA DE SOUSA",
-  },
-  Boali: {
-    razaoSocial: "Ace Invest comércio e varejo Ltda.",
-    cnpj: "45.226.103/0001-02",
-    endereco: "Av. Doutor Olivio Lira, nº 353",
+  "Praia da Costa": {
+    razaoSocial: "AJAX SERVIÇOS DE ENTREGA LTDA.",
+    cnpj: "52.311.860/0001-40",
+    endereco: "Rua General Osório, nº 127, Edif. A Gazeta, sala 902, Centro",
     bairro: "Praia da Costa",
     municipio: "Vila Velha",
     uf: "Espírito Santo",
-    cep: "29050-632",
+    cep: "29010-030",
     representante: "DANIEL SILVA DE SOUSA",
   },
 };
 
 export const OPERATOR_UNIT_KEYS = Object.keys(OPERATOR_UNITS) as UnitKey[];
+
 
 function formatDateBR(d: Date) {
   const meses = [

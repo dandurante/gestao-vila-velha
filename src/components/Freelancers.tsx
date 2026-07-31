@@ -737,6 +737,7 @@ export function Freelancers() {
                             setEntryDate(`${y}-${m}-${d}`);
                           }
                         }}
+                        disabled={(date) => date > new Date()}
                         locale={ptBR}
                         initialFocus
                       />
