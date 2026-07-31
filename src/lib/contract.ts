@@ -11,9 +11,7 @@ interface ContractData {
 const HEADER = "AJAX SERVIÇOS DE ENTREGA LTDA.";
 const SUBHEADER = "CNPJ: 52.311.860/0001-40";
 
-
 function genderOf(estadoCivil: string): { nacionalidade: string; civil: string; portador: string } {
-  // O cadastro não tem sexo; usamos o próprio "Solteiro(a)" como veio.
   const civil = estadoCivil || "solteiro(a)";
   return {
     nacionalidade: "brasileiro(a)",
@@ -75,7 +73,7 @@ export function generateContractPdf(data: ContractData): { blob: Blob; filename:
   let y = 28;
   let pageNum = 1;
 
-  const { nacionalidade, civil, portador } = genderOf(data.estadoCivil);
+  const { nacionalidade, civil } = genderOf(data.estadoCivil);
   const today = new Date();
   const endDate = new Date(today);
   endDate.setFullYear(endDate.getFullYear() + 1);
@@ -121,182 +119,155 @@ export function generateContractPdf(data: ContractData): { blob: Blob; filename:
 
   // Qualificação CONTRATANTE
   writeParagraph(
-    "AJAX SERVIÇOS DE ENTREGA LTDA., pessoa jurídica de direito privado, devidamente inscrita sob CNPJ nº 52.311.860/0001-40, com sede na Rua General Osório, nº 127, Edif. A Gazeta, sala 902, Centro, Vitória/ES, CEP: 29010-030, neste ato representada por seu sócio DANIEL BARROS DURANTE, brasileiro, casado, portador do CPF nº 839.773.921-15, doravante designada simplesmente CONTRATANTE;",
+    "CONTRATANTE: AJAX SERVIÇOS DE ENTREGA LTDA., pessoa jurídica de direito privado, devidamente inscrita sob CNPJ nº 52.311.860/0001-40, com sede na Rua General Osório, nº 127, Edif. A Gazeta, sala 902, Centro, Vitória/ES, CEP: 29010-030, neste ato representada por seu sócio DANIEL BARROS DURANTE.",
+    { bold: true }
   );
 
-
-  // Qualificação CONTRATADA preenchida
+  // Qualificação CONTRATADO(A)
   writeParagraph(
-    `${data.nome.toUpperCase()}, ${nacionalidade}, ${civil}, profissional autônomo(a), devidamente inscrito(a) no CPF/MF sob o nº ${data.cpf}, ${portador} da cédula de identidade RG nº ${data.rg}, com endereço residencial na ${data.endereco}, doravante designado(a) simplesmente CONTRATADA(O).`,
+    `CONTRATADO(A): ${data.nome.toUpperCase()}, ${nacionalidade}, ${civil}, prestador(a) autônomo(a) / MEI, inscrito(a) no CPF sob o nº ${data.cpf}, portador(a) da Cédula de Identidade RG nº ${data.rg}, residente e domiciliado(a) na ${data.endereco}.`
   );
 
+  // 1
+  writeTitle("1. CLÁUSULA PRIMEIRA – DO OBJETO");
   writeParagraph(
-    'Todos acima qualificados, designam em conjunto como "PARTES" e individualmente como "CONTRATANTE" e "CONTRATADA(O)".',
+    "1.1. O presente contrato de terceirização e prestação de serviços de transporte, coletas e entregas tem como objeto a entrega de produtos através de prestação autônoma ou Microempreendedor Individual, com remuneração variável conforme o volume de entregas.",
   );
   writeParagraph(
-    "As PARTES celebram o presente contrato de PRESTAÇÃO DE SERVIÇOS DE MOTOBOY AUTÔNOMO OU MICRO EMPREENDEDOR INDIVIDUAL (MEI), sob a regência do Código Civil (Lei nº 10.406/02) e mediante as cláusulas e condições adiante estipuladas que, voluntariamente, aceitam e outorgam:",
-  );
-
-  // CLÁUSULA PRIMEIRA
-  writeTitle("1. CLÁUSULA PRIMEIRA - DO OBJETO");
-  writeParagraph(
-    "1.1. O presente contrato de terceirização e prestação de serviços de transporte, coletas e entregas, conforme as cláusulas e condições a seguir estipuladas, as partes contratantes mutuamente aceitam e outorgam, para prestação de entrega de produtos através de empresa contratada de Microempreendedor Individual, com remuneração variável conforme volume de entregas.",
-  );
-  writeParagraph(
-    "1.1.1. A relação estabelecida pelo presente contrato não se regerá pelas normas insculpidas na Consolidação das Leis do Trabalho, mas pelas constantes dos artigos 594 e seguintes do Novo Código Civil, sendo acordado entre as partes que a(o) CONTRATADA(O) não se caracteriza sob vínculo de subordinação para com a CONTRATANTE, sem obrigatoriedade de habitualidade, sem obrigatoriedade da CONTRATANTE em onerar os serviços recusados, podendo se fazer substituir com aviso antecipado à CONTRATANTE, podendo a(o) CONTRATADA(O) fixar seu próprio horário de trabalho.",
+    "1.1.1. A relação estabelecida por este instrumento rege-se pelos artigos 594 e seguintes do Código Civil (Lei nº 10.406/02), sem vínculo de subordinação ou habitualidade, podendo o(a) CONTRATADO(A) recusar serviços, se fazer substituir mediante aviso prévio e fixar seus próprios horários.",
   );
 
-  // CLÁUSULA SEGUNDA - DO PRAZO (preenchida)
+  // 2
   writeTitle("2. CLÁUSULA SEGUNDA – DO PRAZO");
   writeParagraph(
-    `2.1. A vigência deste Contrato se dá pelo prazo de 1 (um) ano, a contar do dia ${formatShort(today)} ("Data Inicial"), finalizando-se em ${formatShort(endDate)} ("Data Final"), podendo ser renovado entre Partes de comum acordo e mediante celebração de aditivo a este Contrato.`,
+    `2.1. A vigência deste Contrato dá-se pelo prazo de 1 (um) ano a contar da data de sua assinatura (${formatShort(today)}), finalizando-se em (${formatShort(endDate)}), podendo ser renovado mediante aditivo.`,
   );
   writeParagraph(
-    "2.2. Havendo interesse na rescisão antes do prazo acima estipulado, a parte interessada notificará a parte contrária, por escrito, com antecedência mínima de 5 (cinco) dias.",
-  );
-  writeParagraph(
-    "2.3. A rescisão do presente instrumento de contrato não extingue os direitos e obrigações que as partes tenham entre si para com terceiros.",
+    "2.2. Havendo interesse na rescisão antecipada, a parte interessada notificará a outra por escrito com antecedência mínima de 5 (cinco) dias.",
   );
 
-  // CLÁUSULA TERCEIRA
-  writeTitle("3. CLÁUSULA TERCEIRA - DA PRESTAÇÃO DO SERVIÇO");
+  // 3
+  writeTitle("3. CLÁUSULA TERCEIRA – DA PRESTAÇÃO DO SERVIÇO");
   writeParagraph(
-    "3.1. A(O) CONTRATADA(O) prestará os serviços previstos na Cláusula Primeira, em caráter NÃO EXCLUSIVO, na cidade de São Paulo e região.",
+    "3.1. O(A) CONTRATADO(A) prestará os serviços em caráter NÃO EXCLUSIVO na cidade de São Paulo e região.",
   );
   writeParagraph(
-    "3.2. Os serviços serão prestados sem horário fixo, de acordo com a conveniência da empresa e com a disponibilidade do contratado.",
+    "3.2. Os serviços serão prestados sem horário fixo, conforme a conveniência da operação e a livre disponibilidade do contratado.",
   );
   writeParagraph(
-    "3.3. A(O) CONTRATADA(O) deverá atender aos chamados ocasionais da CONTRATANTE, reservando-se ao direito de recusá-los na impossibilidade do atendimento imediato, em respeito aos serviços prestados a outras empresas.",
+    "3.3. O(A) CONTRATADO(A) poderá recusar chamados ocasionais quando estiver impossibilitado ou prestando serviços a terceiros.",
   );
   writeParagraph(
-    "3.4. Uma vez aceito o serviço, a(o) CONTRATADA(O) se compromete a realizá-lo no tempo, local e seguindo as especificações combinadas.",
-  );
-
-  // CLÁUSULA QUARTA
-  writeTitle("4. CLÁUSULA QUARTA – DA INDEPENDÊNCIA HIERÁRQUICA NA PRESTAÇÃO DE SERVIÇO");
-  writeParagraph(
-    "4.1. Fica acordado entre a CONTRATANTE e a(o) CONTRATADA(O), que as partes NÃO POSSUEM HIERARQUIA NA RELAÇÃO DE PRESTAÇÃO DE SERVIÇO, logo, tendo em vista que a atividade profissional caracteriza-se como atividade meio, a CONTRATANTE informará as vagas disponíveis por meios de comunicação próprio ou por aplicativo e a(o) CONTRATADA(O) informará previamente se estará disponível para prestação de serviço.",
+    "3.4. Uma vez aceito o serviço, compromete-se a realizá-lo conforme o local e especificações combinadas.",
   );
 
-  // CLÁUSULA QUINTA
-  writeTitle("5. CLÁUSULA QUINTA – DA PRESTAÇÃO DE SERVIÇOS DE NATUREZA EVENTUAL");
+  // 4
+  writeTitle("4. CLÁUSULA QUARTA – DA INDEPENDÊNCIA HIERÁRQUICA");
   writeParagraph(
-    "5.1. Fica estabelecido entre as partes que a prestação de serviços se caracterizará de natureza eventual, logo, CONTRATANTE informará as vagas disponíveis por meios de comunicação própria (Aplicativo WhatsApp) ou por aplicativo e a(o) CONTRATADA(O) informará previamente se estará disponível para prestação de serviço, na data, hora e local indicado pela CONTRATANTE.",
+    "4.1. As partes declaram que não possuem hierarquia. A CONTRATANTE informará as vagas disponíveis e o(a) CONTRATADO(A) responderá sobre sua disponibilidade prévia.",
   );
 
-  // CLÁUSULA SEXTA
+  // 5
+  writeTitle("5. CLÁUSULA QUINTA – DA NATUREZA EVENTUAL");
+  writeParagraph(
+    "5.1. A prestação de serviços possui natureza eventual, disponibilizada via aplicativo de mensagens (WhatsApp) ou plataforma própria.",
+  );
+
+  // 6
   writeTitle("6. CLÁUSULA SEXTA – DAS PERDAS E AVARIAS");
   writeParagraph(
-    "6.1. As perdas ou avarias dos materiais durante o transporte serão de única e exclusiva responsabilidade da CONTRATADA e deverá ressarcir a CONTRATANTE de todos os prejuízos daí decorrentes.",
+    "6.1. As perdas ou avarias dos materiais durante o transporte serão de exclusiva responsabilidade do(a) CONTRATADO(A), devendo ressarcir a CONTRATANTE dos prejuízos comprovados.",
   );
 
-  // CLÁUSULA SÉTIMA
-  writeTitle(
-    "7. CLÁUSULA SÉTIMA – DA TERCEIRIZAÇÃO CASO A(O) CONTRATADA(O) SEJA QUALIFICADA(O) COMO MEI",
-  );
+  // 7
+  writeTitle("7. CLÁUSULA SÉTIMA – DA TERCEIRIZAÇÃO (MEI)");
   writeParagraph(
-    "7.1. A CONTRATADA na qualidade de empresa terceirizada e especializada no setor de transportes e cargas, compromete-se a prestar à CONTRATANTE serviços de transportes, coletas e entregas de peças, mercadorias, encomendas, documentos, volumes, pacotes e outros, dentro do perímetro urbano de São Paulo e arredores, sem limite de quilometragem, os quais serão executados através de um motorista equipado com veículo de carga automotor com capacidade de carga e locomoção que atenda às necessidades da CONTRATANTE, mediante remuneração pelo serviço através do pagamento do frete (art. 730 do Código Civil). A coleta no domicílio do embarcador ou a entrega no domicílio do destinatário deverão ser objeto de ajuste específico, declarado expressamente no conhecimento de transporte (art. 752 do Código Civil) mediante remuneração própria, valores estes pagos pelo consumidor e repassados à empresa MEI contratada.",
+    "7.1. Na qualidade de MEI ou prestador autônomo especializado em entregas urbanas, o frete será remunerado conforme os valores e tabelas repassados.",
   );
 
-  // CLÁUSULA OITAVA
+  // 8
   writeTitle("8. CLÁUSULA OITAVA – DO VEÍCULO");
   writeParagraph(
-    "8.1. A fim de atender as solicitações da CONTRATANTE, a(o) CONTRATADA(O) colocará à disposição daquela um motorista equipado com um veículo automotor, durante todo o tempo de vigência do presente instrumento, que deverá estar disponível durante os horários contratados e nos locais indicados pela CONTRATANTE por meio de aplicativos de comunicação e afins, para realizar a entrega, podendo se fazer substituir por outras empresas de MEI ou pessoas indicadas.",
+    "8.1. O(A) CONTRATADO(A) utilizará veículo automotor próprio (motocicleta), em adequadas condições de uso e segurança, assumindo os custos de combustível, manutenção e conservação.",
   );
 
-  // CLÁUSULA NONA
+  // 9
   writeTitle("9. CLÁUSULA NONA – DOS CONDUTORES");
   writeParagraph(
-    "9.1. Caso a CONTRATANTE, por qualquer motivo, não aprove os condutores enviados pela(o) CONTRATADA(O), ou os mesmos estejam impossibilitados para efetuar os serviços por motivos pessoais, de saúde e/ou quaisquer outros, a(o) CONTRATADA(O) deverá efetuar a imediata substituição dos mesmos, tantas e quantas vezes forem necessárias, até a completa satisfação e adaptação da CONTRATANTE, devendo os condutores de veículos enviados pela(o) CONTRATADA(O) ser sempre funcionários e/ou sócios integrantes desta, devidamente registrados e/ou constantes do contrato social.",
-  );
-  writeParagraph(
-    "9.2. Ficarão a cargo exclusivo da(o) CONTRATADA(O) todos os custos com combustíveis, conservação, limpeza e manutenção do veículo, principalmente no que se refere à parte mecânica e requisitos e condições de segurança estabelecidos pelo Código de Trânsito Brasileiro e normas do CONTRAN, consequentemente sobre a possível indicação de empresa terceira ou pessoas indicadas em relação a sua indisponibilidade para prestação do serviço aceito pela(o) CONTRATADA(O).",
+    "9.1. Todos os custos com combustível, manutenção, peças, conservação do veículo e multas de trânsito correm por conta exclusiva do(a) CONTRATADO(A).",
   );
 
-  // CLÁUSULA DÉCIMA
-  writeTitle("10. CLÁUSULA DÉCIMA – OBRIGAÇÕES");
-  writeParagraph("10.1. Para a consecução do objeto previsto na Cláusula Primeira, caberá:");
-  writeParagraph("10.1.1. À(AO) CONTRATADA(O):", { bold: true });
+  // 10
+  writeTitle("10. CLÁUSULA DÉCIMA – DAS OBRIGAÇÕES");
+  writeParagraph("10.1. Obrigações do(a) CONTRATADO(A):", { bold: true });
   writeParagraph(
-    "10.1.1.1. Apresentação, no ato da assinatura do presente instrumento, certificado de MEI, comprovante de endereço, documentação de identificação, documentação do veículo que será utilizado para prestação de serviço e cópia da Carteira Nacional de Trânsito (CNH).",
+    "• Apresentar documento com foto (RG/CNH), CPF, comprovante de endereço e documento da motocicleta.",
   );
   writeParagraph(
-    "10.1.1.2. Cumprir as normas e procedimentos de segurança definidos pela CONTRATANTE.",
+    "• Manter equipamentos de proteção de segurança exigidos pelo Código de Trânsito Brasileiro.",
   );
   writeParagraph(
-    "10.1.1.3. Manter sigilo absoluto sobre as informações e documentos a que tiver acesso em razão da prestação do serviço.",
+    "• A entrega do pedido deve ser realizada no prazo hábil médio estipulado de 45 (quarenta e cinco) minutos após a retirada.",
   );
-  writeParagraph("10.1.1.4. Responder por danos causados a terceiros em razão de sua conduta.");
-  writeParagraph("10.1.1.5. Manter regularizada toda a documentação pessoal e do veículo.");
+  writeParagraph("• Garantir a integridade física dos produtos transportados.");
   writeParagraph(
-    "10.1.1.6. Cumprir os horários e prazos acordados para retirada e entrega das mercadorias.",
-  );
-  writeParagraph(
-    "10.1.1.7. A(O) CONTRATADA(O) deverá possuir todos os equipamentos de segurança exigidos por força legal, responsabilizando-se única e exclusivamente por eventuais acidentes.",
+    "• Responder civil e administrativamente por multas de trânsito causadas no exercício da atividade.",
   );
   writeParagraph(
-    "10.1.1.8. A(O) CONTRATADA(O) deverá emitir as notas relativas à prestação do serviço, referente ao CNPJ cadastrado como MEI.",
+    "• Realizar a assinatura eletrônica dos relatórios e recibos semanais de produção.",
   );
+  writeParagraph("10.2. Obrigações da CONTRATANTE:", { bold: true });
   writeParagraph(
-    "10.1.1.9. A(O) CONTRATADA(O) deverá apresentar certidão de quitação de débitos do CNPJ cadastrado como MEI.",
+    "• Fornecer os dados de endereço e contato do destinatário para a efetivação da entrega.",
   );
-  writeParagraph(
-    "10.1.1.10. A(O) CONTRATADA(O) deverá apresentar o CCM (Cadastro de Contribuinte Mobiliário).",
-  );
-  writeParagraph(
-    "10.1.1.23. A(O) CONTRATADA(O) deverá assinar, ao final da prestação de serviço realizada para a CONTRATANTE, recibo informando a data do serviço prestado, horário e quantidade de entregas realizadas.",
-  );
-  writeParagraph("10.1.2. À CONTRATANTE:", { bold: true });
-  writeParagraph(
-    "10.1.2.1. Verificar a utilização do material necessário à execução dos serviços;",
-  );
-  writeParagraph(
-    "10.1.2.2. Fornecer os dados tais como nome, endereço, telefone, entre outros, necessários ao contato com o cliente;",
-  );
-  writeParagraph("10.1.2.3. Efetuar o pagamento no prazo estipulado neste contrato.");
+  writeParagraph("• Efetuar o pagamento da remuneração nas datas pactuadas.");
 
-  // CLÁUSULAS 11-13
+  // 11
   writeTitle("11. CLÁUSULA DÉCIMA PRIMEIRA – DO PAGAMENTO");
   writeParagraph(
-    "11.1. A CONTRATANTE pagará à(ao) CONTRATADA(O) o valor acordado por entrega/serviço, conforme tabela vigente.",
+    "11.1. A remuneração será variável conforme o volume de entregas e diárias acordadas.",
   );
   writeParagraph(
-    "11.2.1. O pagamento previsto nesta cláusula será feito toda terça-feira subsequente à execução do serviço, mediante comprovação das entregas e relatórios, sob pena de incidência de multa de 2% (dois por cento) sobre o valor a ser pago.",
+    "11.2. A remuneração padrão pelo dia de serviço prestado inclui a diária base de R$ 100,00. Neste valor está incluída as horas de trabalho, o aluguel da moto, e o combustível necessario para a realização do trabalho. Será fornecida refeição no local.",
+  );
+  writeParagraph(
+    "11.3. O pagamento é efetuado semanalmente (às terças-feiras subsequentes à prestação do serviço), via Pix ou transferência bancária, mediante conferência e assinatura do recibo de pagamento.",
   );
 
+  // 12
   writeTitle("12. CLÁUSULA DÉCIMA SEGUNDA – DAS MERCADORIAS");
   writeParagraph(
-    "12.1. As mercadorias deverão ser entregues com a mesma qualidade e quantidade que saíram da contratante, sob pena de desconto do valor dos produtos no frete.",
+    "12.1. O prestador responderá pelo valor das notas e mercadorias em caso de extravio indevido ou avaria por negligência, eximindo-se em casos de força maior ou caso fortuito devidamente justificados.",
   );
 
+  // 13
   writeTitle("13. CLÁUSULA DÉCIMA TERCEIRA – DA RESCISÃO");
   writeParagraph(
-    "13.3. Desídia do(a) contratado(a) no cumprimento das obrigações assumidas para com a CONTRATANTE e terceiros;",
-  );
-  writeParagraph(
-    "13.4. Praticar atos que atinjam a imagem comercial da contratante perante terceiros;",
-  );
-  writeParagraph(
-    "13.5. Deixar de cumprir a(o) CONTRATADA(O) qualquer das cláusulas dispostas no presente instrumento;",
-  );
-  writeParagraph(
-    "13.6. Solicitar à CONTRATANTE atividade que exceda o previsto neste instrumento de contrato;",
-  );
-  writeParagraph(
-    "13.7. Deixar a contratante de observar quaisquer obrigações que constem no presente contrato;",
+    "13.1. O contrato poderá ser rescindido por qualquer das partes mediante comunicação prévia por escrito de 5 (cinco) dias, ou imediatamente em caso de infração grave a qualquer das cláusulas.",
   );
 
-  // CLÁUSULA 17
-  writeTitle("17. CLÁUSULA DÉCIMA SÉTIMA – DISPOSIÇÕES GERAIS");
+  // 14
+  writeTitle("14. CLÁUSULA DÉCIMA QUARTA – DA INEXISTÊNCIA DE SOCIEDADE");
   writeParagraph(
-    "17.5. Exime-se das penalidades dispostas neste Contrato a Parte submetida, comprovadamente, a caso fortuito ou força maior, tal como previsto no Código Civil, desde que tal fato venha a afetar diretamente a execução do presente Contrato, conforme dispõe o artigo 393 do Código Civil Brasileiro.",
+    "14.1. O instrumento não estabelece vínculo societário, representação comercial ou associação entre as partes.",
   );
+
+  // 15
+  writeTitle("15. CLÁUSULA DÉCIMA QUINTA – DA AUSÊNCIA DE VÍNCULO TRABALHISTA");
   writeParagraph(
-    "17.6. Caso qualquer uma das cláusulas deste Contrato venha a ser declarada nula, no todo ou em parte, por qualquer razão, as demais cláusulas continuarão em vigor, a menos que o objeto deste Contrato seja afetado.",
+    "15.1. O presente contrato não gera vínculo empregatício de qualquer natureza (CLT), sendo o(a) CONTRATADO(A) autônomo(a) e responsável por seus próprios encargos previdenciários e tributários.",
   );
+
+  // 16
+  writeTitle("16. CLÁUSULA DÉCIMA SEXTA – DAS ASSINATURAS ELETRÔNICAS");
   writeParagraph(
-    "17.11. A(O) CONTRATADA(O) cede em caráter universal, total, definitivo, por prazo indeterminado e a título gratuito à CONTRATANTE os direitos de uso de seu nome e imagem dentro da Plataforma (WhatsApp) da CONTRATANTE para que os Clientes Finais ou Estabelecimentos Parceiros possam identificá-lo(a) e ainda em campanhas e eventos produzidos e/ou patrocinados pela CONTRATANTE dos quais a(o) CONTRATADA(O) participe.",
+    "16.1. As partes aceitam a assinatura e formalização deste instrumento por meio eletrônico / digital (ZapSign / ICP-Brasil), nos termos da MP nº 2.200-2/2001 e Lei nº 14.063/2020.",
+  );
+
+  // 17
+  writeTitle("17. CLÁUSULA DÉCIMA SÉTIMA – DO FORO");
+  writeParagraph(
+    "17.1. Fica eleito o Foro Central da Comarca da Capital do Estado de São Paulo para dirimir quaisquer dúvidas ou controvérsias decorrentes deste contrato.",
   );
 
   // Local e data + Assinaturas
@@ -304,7 +275,7 @@ export function generateContractPdf(data: ContractData): { blob: Blob; filename:
   y += 4;
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
-  doc.text(`São Paulo, ${formatDateBR(today)}.`, marginX, y);
+  doc.text(`Vitória/ES, ${formatDateBR(today)}.`, marginX, y);
   y += 12;
 
   doc.setFont("helvetica", "bold");
@@ -321,7 +292,6 @@ export function generateContractPdf(data: ContractData): { blob: Blob; filename:
   doc.setFont("helvetica", "normal");
   doc.setFontSize(9);
   doc.text("(Representante Legal – DANIEL BARROS DURANTE)", marginX, y);
-
   y += 14;
 
   // Linha CONTRATADA
