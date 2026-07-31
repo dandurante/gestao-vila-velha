@@ -239,22 +239,21 @@ export function FreelancerRegistry() {
       }
 
       if (existingContracts && existingContracts.length > 0) {
-        toast.error("Já existe contrato vigente para este prestador.");
-        
-        // Log de Auditoria do Bloqueio
-        await (supabase as any).from("audit_logs").insert({
-          user_email: currentUserEmail,
-          action: "bloqueio de geração de contrato",
-          freelancer_id: op.id,
-          freelancer_name: op.nome,
-          freelancer_cpf: op.cpf,
-          reason: "Tentativa de emitir novo contrato com outro contrato ainda vigente",
-          device_info: navigator.userAgent,
-        });
+        const replaceOk = window.confirm(
+          `Já existe um contrato registrado para ${op.nome}. Deseja cancelar o contrato anterior e gerar um novo contrato substituto?`
+        );
+        if (!replaceOk) {
+          setGeneratingContract(false);
+          return;
+        }
 
-        setGeneratingContract(false);
-        return;
+        // Cancela os contratos anteriores para liberar a nova emissão
+        await supabase
+          .from("contracts")
+          .update({ status: "cancelado" })
+          .in("id", existingContracts.map((c) => c.id));
       }
+
 
       const selectedUnit = (contractUnit || "Praia da Costa") as UnitKey;
       const { blob, filename } = generateOperatorContractPdf({
@@ -393,20 +392,18 @@ export function FreelancerRegistry() {
       }
 
       if (existingContracts && existingContracts.length > 0) {
-        toast.warning("Já existe contrato vigente para este prestador. Contrato automático não enviado.");
-        
-        // Log de Auditoria do Bloqueio
-        await (supabase as any).from("audit_logs").insert({
-          user_email: currentUserEmail,
-          action: "bloqueio de geração de contrato",
-          freelancer_name: f.nome,
-          freelancer_cpf: f.cpf,
-          reason: "Cadastro de Entregador: já possui contrato vigente",
-          device_info: navigator.userAgent,
-        });
+        const replaceOk = window.confirm(
+          `Já existe um contrato registrado para o entregador ${f.nome}. Deseja cancelar o contrato anterior e enviar o novo contrato substituto?`
+        );
+        if (!replaceOk) return;
 
-        return;
+        // Cancela os contratos anteriores para liberar o novo envio
+        await supabase
+          .from("contracts")
+          .update({ status: "cancelado" })
+          .in("id", existingContracts.map((c) => c.id));
       }
+
 
       toast.info("Gerando contrato e enviando para ZapSign...");
       const { blob, filename } = generateContractPdf({
