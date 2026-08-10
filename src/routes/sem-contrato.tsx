@@ -1,17 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, AlertTriangle, Download, RefreshCw } from "lucide-react";
+import { ArrowLeft, AlertTriangle, Download } from "lucide-react";
 import { useSortable } from "@/hooks/useSortable";
 import { SortHeader } from "@/components/SortHeader";
 import { exportSheet } from "@/lib/exportXlsx";
-import { toast } from "sonner";
-import { cn } from "@/lib/utils";
-import { ZAPSIGN_TOKEN, getZapSignDoc } from "@/lib/zapsign";
-import { listSignedZapSignDocs } from "@/lib/zapsign.functions";
 
 export const Route = createFileRoute("/sem-contrato")({
   component: SemContratoPage,
@@ -26,17 +22,7 @@ export const Route = createFileRoute("/sem-contrato")({
   }),
 });
 
-function normalizeNameKey(s: string | null | undefined): string {
-  return (s || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, "");
-}
-
 function SemContratoPage() {
-  const queryClient = useQueryClient();
-
   const { data: registry = [] } = useQuery({
     queryKey: ["reg_full"],
     queryFn: async () => {
@@ -55,131 +41,14 @@ function SemContratoPage() {
     },
   });
 
-  const syncContractsMutation = useMutation({
-    mutationFn: async () => {
-      let updatedCount = 0;
-      const { data: dbContracts, error } = await supabase
-        .from("contracts")
-        .select("id, zapsign_token, status, freelancer_name, freelancer_cpf")
-        .not("zapsign_token", "is", null);
-
-      if (error) throw error;
-
-      for (const c of dbContracts || []) {
-        if (!c.zapsign_token) continue;
-        try {
-          const doc = await getZapSignDoc(ZAPSIGN_TOKEN, c.zapsign_token);
-          const st = (doc?.status || "").toLowerCase();
-          if (st === "signed" && c.status !== "assinado") {
-            await supabase
-              .from("contracts")
-              .update({
-                status: "assinado",
-                signed_at: doc.last_update_at || (doc as any).created_at || new Date().toISOString(),
-                signed_file_url: doc.signed_file || null,
-              })
-              .eq("id", c.id);
-            updatedCount++;
-          }
-        } catch (e) {
-          console.warn(`Erro ao verificar status do contrato ${c.id}:`, e);
-        }
-      }
-
-      try {
-        const res = await listSignedZapSignDocs();
-        const signedDocs = res.docs || [];
-        for (const sdoc of signedDocs) {
-          const docName = (sdoc.name || "").toLowerCase();
-          if (!docName.includes("contrato")) continue;
-
-          const { data: existingContract } = await supabase
-            .from("contracts")
-            .select("id, status")
-            .eq("zapsign_token", sdoc.token)
-            .maybeSingle();
-
-          if (existingContract) {
-            if (existingContract.status !== "assinado") {
-              await supabase
-                .from("contracts")
-                .update({
-                  status: "assinado",
-                  signed_at: sdoc.last_update_at || sdoc.created_at || new Date().toISOString(),
-                  signed_file_url: sdoc.signed_file || null,
-                })
-                .eq("id", existingContract.id);
-              updatedCount++;
-            }
-          } else {
-            const signerName = sdoc.signers?.[0]?.name || sdoc.name;
-            const reg = registry.find(
-              (f) =>
-                normalizeNameKey(f.nome) === normalizeNameKey(signerName) ||
-                (sdoc.name && normalizeNameKey(sdoc.name).includes(normalizeNameKey(f.nome))),
-            );
-
-            if (reg) {
-              await supabase.from("contracts").insert({
-                freelancer_id: reg.id,
-                freelancer_name: reg.nome,
-                freelancer_cpf: reg.cpf,
-                status: "assinado",
-                zapsign_token: sdoc.token,
-                signed_file_url: sdoc.signed_file || null,
-                signed_at: sdoc.last_update_at || sdoc.created_at || new Date().toISOString(),
-                unit: "Praia da Costa",
-                daily_rate: 0,
-              });
-              updatedCount++;
-            }
-          }
-        }
-      } catch (err) {
-        console.warn("Erro ao buscar documentos da ZapSign:", err);
-      }
-
-      return updatedCount;
-    },
-    onSuccess: (count) => {
-      queryClient.invalidateQueries({ queryKey: ["contracts_all"] });
-      queryClient.invalidateQueries({ queryKey: ["contracts_all_control"] });
-      if (count > 0) {
-        toast.success(`Sincronização concluída! ${count} contrato(s) atualizado(s).`);
-      } else {
-        toast.info("Status dos contratos atualizado com a ZapSign.");
-      }
-    },
-    onError: (err: any) => {
-      toast.error(`Erro ao sincronizar: ${err.message}`);
-    },
-  });
-
   const semContrato = useMemo(() => {
-    const signedContracts = contractsRaw.filter((c: any) => c.status === "assinado");
-
+    const comContrato = new Set(
+      contractsRaw
+        .filter((c: any) => c.status === "assinado")
+        .map((c: any) => (c.freelancer_name ?? "").trim().toLowerCase()),
+    );
     return registry
-      .filter((r: any) => {
-        const rCpfDigits = String(r.cpf ?? "").replace(/\D/g, "");
-        const rNameKey = normalizeNameKey(r.nome);
-
-        const hasSigned = signedContracts.some((c: any) => {
-          const cCpfDigits = String(c.freelancer_cpf ?? "").replace(/\D/g, "");
-          const cNameKey = normalizeNameKey(c.freelancer_name);
-
-          const matchCpf = !!(rCpfDigits && cCpfDigits && rCpfDigits === cCpfDigits);
-          const matchId = !!(r.id && c.freelancer_id === r.id);
-          const matchName = !!(
-            cNameKey &&
-            rNameKey &&
-            (cNameKey === rNameKey || cNameKey.includes(rNameKey) || rNameKey.includes(cNameKey))
-          );
-
-          return matchCpf || matchId || matchName;
-        });
-
-        return !hasSigned;
-      })
+      .filter((r: any) => !comContrato.has((r.nome ?? "").trim().toLowerCase()))
       .map((r: any) => ({
         id: r.id,
         nome: r.nome,
@@ -226,24 +95,9 @@ function SemContratoPage() {
               </p>
             </div>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => syncContractsMutation.mutate()}
-              disabled={syncContractsMutation.isPending}
-              className="gap-1.5 font-semibold text-xs"
-              title="Sincronizar status dos contratos assinados na ZapSign"
-            >
-              <RefreshCw
-                className={cn("h-3.5 w-3.5", syncContractsMutation.isPending && "animate-spin")}
-              />
-              {syncContractsMutation.isPending ? "Sincronizando..." : "Sincronizar ZapSign"}
-            </Button>
-            <Button variant="outline" size="sm" onClick={handleExport} disabled={!semContrato.length}>
-              <Download className="mr-2 h-4 w-4" /> Exportar Excel
-            </Button>
-          </div>
+          <Button variant="outline" size="sm" onClick={handleExport} disabled={!semContrato.length}>
+            <Download className="mr-2 h-4 w-4" /> Exportar Excel
+          </Button>
         </div>
 
         <Card>

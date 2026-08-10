@@ -36,8 +36,8 @@ import {
 import { toast } from "sonner";
 import { CurrencyInput } from "@/components/CurrencyInput";
 import { generateReceiptPdf } from "@/lib/receiptPdf";
-import { sendToZapSign, getZapSignDoc, ZAPSIGN_TOKEN } from "@/lib/zapsign";
-import { listRecentZapSignDocs, listSignedZapSignDocs } from "@/lib/zapsign.functions";
+import { sendToZapSign } from "@/lib/zapsign";
+import { listRecentZapSignDocs } from "@/lib/zapsign.functions";
 import { Checkbox } from "@/components/ui/checkbox";
 import { formatBRLCurrency } from "@/lib/currency";
 import { getUnitDisplayName } from "@/lib/units";
@@ -64,19 +64,14 @@ import {
 } from "lucide-react";
 import { differenceInDays, parseISO, format } from "date-fns";
 
-function normalizeNameKey(s: string | null | undefined): string {
-  return (s || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, "");
-}
+const ZAPSIGN_TOKEN =
+  (typeof process !== "undefined" && process.env?.VITE_ZAPSIGN_TOKEN) ||
+  "0b65b8cd-104c-45f8-b273-3baa8d14dd3da9b9d31b-e2fb-49f5-b0d6-88e56bbd528f";
 
 const AVAILABLE_STORES = [
   "Praia da Costa",
   "Itaparica",
 ];
-
 
 export const Route = createFileRoute("/controle-operacional")({
   component: ControleOperacionalPage,
@@ -172,124 +167,14 @@ function ControleOperacionalPage() {
   });
 
   // 4. Contratos
-  const { data: contracts = [], refetch: refetchContracts } = useQuery({
+  const { data: contracts = [] } = useQuery({
     queryKey: ["contracts_all_control"],
     queryFn: async () => {
       const { data, error } = await supabase.from("contracts").select("*");
       if (error) throw error;
-      return data ?? [];
+      return data;
     },
   });
-
-  const syncContractsMutation = useMutation({
-    mutationFn: async () => {
-      let updatedCount = 0;
-      // 1. Pega contratos no banco que possuam zapsign_token
-      const { data: dbContracts, error } = await supabase
-        .from("contracts")
-        .select("id, zapsign_token, status, freelancer_name, freelancer_cpf")
-        .not("zapsign_token", "is", null);
-
-      if (error) throw error;
-
-      for (const c of dbContracts || []) {
-        if (!c.zapsign_token) continue;
-        try {
-          const doc = await getZapSignDoc(ZAPSIGN_TOKEN, c.zapsign_token);
-          const st = (doc?.status || "").toLowerCase();
-          if (st === "signed" && c.status !== "assinado") {
-            await supabase
-              .from("contracts")
-              .update({
-                status: "assinado",
-                signed_at: doc.last_update_at || (doc as any).created_at || new Date().toISOString(),
-                signed_file_url: doc.signed_file || null,
-              })
-              .eq("id", c.id);
-            updatedCount++;
-          } else if ((st === "canceled" || st === "deleted") && c.status !== "cancelado") {
-            await supabase
-              .from("contracts")
-              .update({ status: "cancelado" })
-              .eq("id", c.id);
-          }
-        } catch (e) {
-          console.warn(`Erro ao verificar status do contrato ${c.id}:`, e);
-        }
-      }
-
-      // 2. Busca lista de documentos assinados na ZapSign para associar contratos que faltam
-      try {
-        const res = await listSignedZapSignDocs();
-        const signedDocs = res.docs || [];
-        for (const sdoc of signedDocs) {
-          const docName = (sdoc.name || "").toLowerCase();
-          if (!docName.includes("contrato")) continue;
-
-          // Procura se já está no banco por token
-          const { data: existingContract } = await supabase
-            .from("contracts")
-            .select("id, status")
-            .eq("zapsign_token", sdoc.token)
-            .maybeSingle();
-
-          if (existingContract) {
-            if (existingContract.status !== "assinado") {
-              await supabase
-                .from("contracts")
-                .update({
-                  status: "assinado",
-                  signed_at: sdoc.last_update_at || sdoc.created_at || new Date().toISOString(),
-                  signed_file_url: sdoc.signed_file || null,
-                })
-                .eq("id", existingContract.id);
-              updatedCount++;
-            }
-          } else {
-            // Tenta casar pelo nome do prestador no cadastro
-            const signerName = sdoc.signers?.[0]?.name || sdoc.name;
-            const reg = freelancers.find(
-              (f) =>
-                normalizeNameKey(f.nome) === normalizeNameKey(signerName) ||
-                (sdoc.name && normalizeNameKey(sdoc.name).includes(normalizeNameKey(f.nome))),
-            );
-
-            if (reg) {
-              await supabase.from("contracts").insert({
-                freelancer_id: reg.id,
-                freelancer_name: reg.nome,
-                freelancer_cpf: reg.cpf,
-                status: "assinado",
-                zapsign_token: sdoc.token,
-                signed_file_url: sdoc.signed_file || null,
-                signed_at: sdoc.last_update_at || sdoc.created_at || new Date().toISOString(),
-                unit: (reg as any).unit || "Praia da Costa",
-                daily_rate: 0,
-              });
-              updatedCount++;
-            }
-          }
-        }
-      } catch (err) {
-        console.warn("Erro ao buscar lista geral da ZapSign:", err);
-      }
-
-      return updatedCount;
-    },
-    onSuccess: (count) => {
-      queryClient.invalidateQueries({ queryKey: ["contracts_all_control"] });
-      queryClient.invalidateQueries({ queryKey: ["contracts_all"] });
-      if (count > 0) {
-        toast.success(`Sincronização concluída! ${count} contrato(s) atualizado(s) para assinado.`);
-      } else {
-        toast.info("Status dos contratos atualizado com a ZapSign.");
-      }
-    },
-    onError: (err: any) => {
-      toast.error(`Erro ao sincronizar com ZapSign: ${err.message}`);
-    },
-  });
-
 
   // 5. Restrições de check-in (habilitar/desabilitar ferramenta)
   const { data: checkinRestrictions = [], refetch: refetchRestrictions } = useQuery({
@@ -1830,38 +1715,27 @@ function ControleOperacionalPage() {
                     assinaturas.
                   </CardDescription>
                 </div>
+                {awaitingApprovalShifts.length > 0 && (
                   <div className="flex flex-col items-end gap-2 md:flex-row md:items-center">
+                    <div className="flex items-center gap-4 mr-4 mb-2 md:mb-0">
+                      {/* WhatsApp options removed */}
+                    </div>
                     <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => syncContractsMutation.mutate()}
-                      disabled={syncContractsMutation.isPending}
-                      className="gap-1.5 font-semibold text-xs"
-                      title="Sincronizar status dos contratos assinados na ZapSign"
+                      onClick={() => handleApproveShifts(awaitingApprovalShifts)}
+                      className="bg-emerald-600 hover:bg-emerald-500 font-bold"
+                      disabled={approvingBatch}
                     >
-                      <RefreshCw
-                        className={cn("h-3.5 w-3.5", syncContractsMutation.isPending && "animate-spin")}
-                      />
-                      {syncContractsMutation.isPending ? "Sincronizando..." : "Sincronizar ZapSign"}
+                      {approvingBatch ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Aprovando Lote...
+                        </>
+                      ) : (
+                        "Aprovar Todos em Lote"
+                      )}
                     </Button>
-                    {awaitingApprovalShifts.length > 0 && (
-                      <Button
-                        onClick={() => handleApproveShifts(awaitingApprovalShifts)}
-                        className="bg-emerald-600 hover:bg-emerald-500 font-bold"
-                        disabled={approvingBatch}
-                      >
-                        {approvingBatch ? (
-                          <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Aprovando Lote...
-                          </>
-                        ) : (
-                          "Aprovar Todos em Lote"
-                        )}
-                      </Button>
-                    )}
                   </div>
-                </div>
+                )}
               </CardHeader>
               <CardContent className="p-0 overflow-x-auto">
                 <Table>
@@ -1878,29 +1752,16 @@ function ControleOperacionalPage() {
                   <TableBody>
                     {awaitingApprovalShifts.map((shift) => {
                       const fl = freelancers.find(
-                        (f) => normalizeNameKey(f.nome) === normalizeNameKey(shift.name),
+                        (f) => f.nome.trim().toLowerCase() === shift.name.trim().toLowerCase(),
                       );
-                      const flCpfDigits = String(fl?.cpf ?? (shift as any).freelancer_cpf ?? "").replace(/\D/g, "");
-                      const shiftNameKey = normalizeNameKey(shift.name);
-
-                      const contract = contracts.find((c) => {
-                        if (c.status !== "assinado") return false;
-                        const cCpfDigits = String(c.freelancer_cpf ?? "").replace(/\D/g, "");
-                        const cNameKey = normalizeNameKey(c.freelancer_name ?? "");
-
-                        const matchCpf = !!(flCpfDigits && cCpfDigits && flCpfDigits === cCpfDigits);
-                        const matchId = !!(fl?.id && c.freelancer_id === fl.id);
-                        const matchName = !!(
-                          cNameKey &&
-                          shiftNameKey &&
-                          (cNameKey === shiftNameKey ||
-                            cNameKey.includes(shiftNameKey) ||
-                            shiftNameKey.includes(cNameKey))
-                        );
-
-                        return matchCpf || matchId || matchName;
-                      });
-
+                      const flCpfDigits = String(fl?.cpf ?? "").replace(/\D/g, "");
+                      const contract = contracts.find(
+                        (c) =>
+                          c.status === "assinado" &&
+                          ((flCpfDigits &&
+                            String(c.freelancer_cpf ?? "").replace(/\D/g, "") === flCpfDigits) ||
+                            (fl?.id && c.freelancer_id === fl.id)),
+                      );
 
                       // Buscar check-in correspondente
                       const check = checkIns.find((c) => c.id === shift.checkin_id);
