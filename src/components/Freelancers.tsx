@@ -254,9 +254,23 @@ export function Freelancers() {
     return () => sub.subscription.unsubscribe();
   }, []);
 
+  const DRAFTS_STORAGE_KEY = "freelancers_entry_drafts_v1";
+  const FORM_META_STORAGE_KEY = "freelancers_entry_meta_v1";
+
   const qc = useQueryClient();
   const [today, setToday] = useState<string>("");
-  const [entryDate, setEntryDate] = useState<string>("");
+  const [entryDate, setEntryDate] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem(FORM_META_STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.entryDate) return parsed.entryDate;
+        }
+      } catch {}
+    }
+    return "";
+  });
 
   useEffect(() => {
     const iso = toISODate(new Date());
@@ -264,16 +278,58 @@ export function Freelancers() {
     setEntryDate((prev) => prev || iso);
   }, []);
 
-  const [unit, setUnit] = useState<Unit>(UNITS[0]);
+  const [unit, setUnit] = useState<Unit>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem(FORM_META_STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.unit && UNITS.includes(parsed.unit)) return parsed.unit;
+        }
+      } catch {}
+    }
+    return UNITS[0];
+  });
   const [filterUnit, setFilterUnit] = useState<Unit | "all">("all");
 
   const [historyRoleFilter, setHistoryRoleFilter] = useState<"all" | "Operador" | "Entregador">(
     "all",
   );
   const [historyPerson, setHistoryPerson] = useState<string>("all");
-  const [drafts, setDrafts] = useState<DraftRow[]>([{ ...emptyDraft }]);
+  const [drafts, setDrafts] = useState<DraftRow[]>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem(DRAFTS_STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch {}
+    }
+    return [{ ...emptyDraft }];
+  });
+
+  // Salva automaticamente o que estiver digitado no rascunho
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const hasContent = drafts.some(
+          (d) => d.name || d.pix || d.daily_rate > 0 || d.deliveries_5 > 0 || d.deliveries_6 > 0,
+        );
+        if (hasContent) {
+          localStorage.setItem(DRAFTS_STORAGE_KEY, JSON.stringify(drafts));
+          localStorage.setItem(FORM_META_STORAGE_KEY, JSON.stringify({ unit, entryDate }));
+        } else {
+          localStorage.removeItem(DRAFTS_STORAGE_KEY);
+          localStorage.removeItem(FORM_META_STORAGE_KEY);
+        }
+      } catch {}
+    }
+  }, [drafts, unit, entryDate]);
+
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [historyRange, setHistoryRange] = useState<DateRange | undefined>(undefined); // Intervalo p/ histórico
+
 
   // Filtro de Totais
   const [totalsUnit, setTotalsUnit] = useState<Unit | "all">("all");
@@ -337,9 +393,16 @@ export function Freelancers() {
     },
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["freelancers"] });
+      if (typeof window !== "undefined") {
+        try {
+          localStorage.removeItem(DRAFTS_STORAGE_KEY);
+          localStorage.removeItem(FORM_META_STORAGE_KEY);
+        } catch {}
+      }
       setDrafts([{ ...emptyDraft }]);
       toast.success("Lançamento salvo!");
     },
+
     onError: (err: Error) => toast.error(`Erro ao salvar: ${err.message}`),
   });
 

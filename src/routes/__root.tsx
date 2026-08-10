@@ -160,15 +160,15 @@ function RootComponent() {
   };
 
   useEffect(() => {
-    // Busca a sessão inicial
+    // Busca a sessão inicial uma única vez
     supabase.auth.getSession().then(async ({ data: { session } }) => {
       setSession(session);
       try {
-        if (session?.user && pathname !== "/reset-password") {
+        if (session?.user) {
           await loadPasswordSetupStatus(session.user.id);
         }
       } catch {
-        setPasswordSetupRequired(true);
+        setPasswordSetupRequired(false);
       } finally {
         setLoading(false);
       }
@@ -177,25 +177,22 @@ function RootComponent() {
     // Escuta mudanças na autenticação (login/logout)
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      if (!session) {
+    } = supabase.auth.onAuthStateChange((event, newSession) => {
+      setSession(newSession);
+      if (!newSession) {
         setPasswordSetupRequired(false);
         setLoading(false);
         return;
       }
-      if (pathname === "/reset-password") return;
 
-      setLoading(true);
-      queueMicrotask(() => {
-        loadPasswordSetupStatus(session.user.id)
-          .catch(() => setPasswordSetupRequired(true))
-          .finally(() => setLoading(false));
-      });
+      // Evita disparar loading e desmontar componentes durante trocas de aba (TOKEN_REFRESHED)
+      if (event === "SIGNED_IN") {
+        loadPasswordSetupStatus(newSession.user.id).catch(() => setPasswordSetupRequired(false));
+      }
     });
 
     return () => subscription.unsubscribe();
-  }, [pathname]);
+  }, []);
 
   if (pathname === "/reset-password") {
     return (

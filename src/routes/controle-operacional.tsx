@@ -103,9 +103,25 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
 function ControleOperacionalPage() {
   const { roles, stores, isAdmin, hasFullAccess, isLoading: loadingRoles } = useUserRoles();
   const { registry: freelancers, isLoaded: freelancersLoaded } = useFreelancerRegistry();
-  const queryClient = useQueryClient();
-  const [activeTab, setActiveTab] = useState<string>("manager");
-  // Removed WhatsApp state variables
+  const [activeTab, setActiveTab] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("controle_operacional_active_tab");
+        if (saved) return saved;
+      } catch {}
+    }
+    return "manager";
+  });
+
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.setItem("controle_operacional_active_tab", tab);
+      } catch {}
+    }
+  };
+
 
   // Sessão do usuário logado
   const [currentUserEmail, setCurrentUserEmail] = useState<string | null>(null);
@@ -376,14 +392,22 @@ function ControleOperacionalPage() {
     hasFullAccess;
   const isFinance = roles.includes("financeiro") || isAdmin || hasFullAccess;
 
-  // Definir tab padrão na carga
+  // Definir tab padrão na carga apenas se não houver tab salva ou se não tiver permissão
   useEffect(() => {
     if (!loadingRoles) {
-      if (isManager) setActiveTab("manager");
-      else if (isDirector) setActiveTab("director");
-      else if (isFinance) setActiveTab("finance");
+      const saved = typeof window !== "undefined" ? localStorage.getItem("controle_operacional_active_tab") : null;
+      if (saved) {
+        if (saved === "manager" && isManager) return;
+        if (saved === "director" && isDirector) return;
+        if (saved === "finance" && isFinance) return;
+        if (saved === "termos" && (isAdmin || hasFullAccess)) return;
+      }
+      if (isManager) handleTabChange("manager");
+      else if (isDirector) handleTabChange("director");
+      else if (isFinance) handleTabChange("finance");
     }
   }, [loadingRoles, roles]);
+
 
   // --- FILTROS DE DADOS OPERACIONAIS ---
 
@@ -1421,7 +1445,8 @@ function ControleOperacionalPage() {
         </header>
 
         {/* Tab Selection */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="space-y-6">
+
           <TabsList className="grid w-full grid-cols-4 max-w-3xl bg-card border border-border/60">
             <TabsTrigger value="manager" disabled={!isManager} className="gap-2">
               <ClipboardCheck className="h-4 w-4" /> 1. Validação
