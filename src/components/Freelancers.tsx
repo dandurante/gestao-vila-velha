@@ -11,7 +11,16 @@ import {
   CalendarIcon,
   Filter,
   ChevronsUpDown,
+  Pencil,
 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+
 import {
   Command,
   CommandEmpty,
@@ -197,8 +206,42 @@ export function Freelancers() {
   const { registry, isLoaded } = useFreelancerRegistry();
   const [receiptOpen, setReceiptOpen] = useState(false);
   const [receiptData, setReceiptData] = useState({ name: "", pix: "" });
+  const EDIT_ALLOWED_EMAILS = [
+    "dandurante@hotmail.com",
+    "dani.pimnetel13@gmail.com",
+    "dani.pimentel13@gmail.com",
+  ];
+
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const isAdmin = userEmail === "dandurante@hotmail.com";
+  const canEdit =
+    isAdmin ||
+    (userEmail !== null &&
+      EDIT_ALLOWED_EMAILS.some((em) => em.toLowerCase() === userEmail.toLowerCase().trim()));
+
+  const [editingEntry, setEditingEntry] = useState<FreelancerRow | null>(null);
+  const [editForm, setEditForm] = useState<{
+    entry_date: string;
+    unit: Unit;
+    name: string;
+    role: "Operador" | "Entregador";
+    pix: string;
+    daily_rate: number;
+    deliveries_5: number;
+    deliveries_6: number;
+    deliveries_total?: number;
+    deliveries_count?: number;
+  }>({
+    entry_date: "",
+    unit: UNITS[0],
+    name: "",
+    role: "Operador",
+    pix: "",
+    daily_rate: 0,
+    deliveries_5: 0,
+    deliveries_6: 0,
+  });
+
 
   useEffect(() => {
     setMounted(true);
@@ -311,6 +354,88 @@ export function Freelancers() {
     },
     onError: (err: Error) => toast.error(`Erro ao remover: ${err.message}`),
   });
+
+  const openEditModal = (r: FreelancerRow) => {
+    setEditingEntry(r);
+    const reg = registry.find(
+      (f) => f.nome.trim().toLowerCase() === (r.name || "").trim().toLowerCase(),
+    );
+    const detectedRole =
+      (r.role as any) === "Entregador" || reg?.role === "Entregador"
+        ? "Entregador"
+        : "Operador";
+
+    const tot = Number((r as any).deliveries_total || 0);
+    const count = Number((r as any).deliveries_count || 0);
+
+    setEditForm({
+      entry_date: r.entry_date,
+      unit: (UNITS.includes(r.unit as Unit) ? r.unit : UNITS[0]) as Unit,
+      name: r.name,
+      role: detectedRole,
+      pix: r.pix,
+      daily_rate: Number(r.daily_rate) || 0,
+      deliveries_5: 0,
+      deliveries_6: 0,
+      deliveries_total: tot > 0 ? tot : undefined,
+      deliveries_count: count > 0 ? count : undefined,
+    });
+  };
+
+  const updateMutation = useMutation({
+    mutationFn: async (payload: { id: string; data: Partial<FreelancerRow> }) => {
+      const { error } = await supabase
+        .from("freelancers")
+        .update(payload.data)
+        .eq("id", payload.id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["freelancers"] });
+      setEditingEntry(null);
+      toast.success("Lançamento atualizado com sucesso!");
+    },
+    onError: (err: Error) => toast.error(`Erro ao atualizar: ${err.message}`),
+  });
+
+  const handleSaveEdit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingEntry) return;
+    if (!editForm.name.trim() || !editForm.pix.trim() || editForm.daily_rate <= 0) {
+      toast.error("Preencha todos os campos obrigatórios (nome, pix e valor da diária).");
+      return;
+    }
+
+    let deliveriesCount: number | null = null;
+    let deliveriesTotal: number | null = null;
+
+    if (editForm.role === "Entregador") {
+      const q5 = Number(editForm.deliveries_5 || 0);
+      const q6 = Number(editForm.deliveries_6 || 0);
+      if (q5 > 0 || q6 > 0) {
+        deliveriesCount = q5 + q6;
+        deliveriesTotal = q5 * 5 + q6 * 6;
+      } else if (editForm.deliveries_total !== undefined && editForm.deliveries_total !== null) {
+        deliveriesTotal = Number(editForm.deliveries_total);
+        deliveriesCount = editForm.deliveries_count ?? null;
+      }
+    }
+
+    updateMutation.mutate({
+      id: editingEntry.id,
+      data: {
+        entry_date: editForm.entry_date,
+        unit: editForm.unit,
+        name: editForm.name.trim(),
+        role: "Freelancer Autônomo",
+        pix: editForm.pix.trim(),
+        daily_rate: editForm.daily_rate,
+        deliveries_count: deliveriesCount,
+        deliveries_total: deliveriesTotal,
+      },
+    });
+  };
+
 
   const updateDraft = (index: number, patch: Partial<DraftRow>) => {
     setDrafts((prev) => prev.map((d, i) => (i === index ? { ...d, ...patch } : d)));
@@ -1366,19 +1491,19 @@ export function Freelancers() {
                     <TableHead className="text-right">Diária</TableHead>
                     <TableHead className="text-right">Entregas</TableHead>
                     <TableHead className="text-right">Total</TableHead>
-                    {isAdmin && <TableHead className="w-12" />}
+                    {canEdit && <TableHead className="w-24 text-right">Ações</TableHead>}
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {isLoading ? (
                     <TableRow>
-                      <TableCell colSpan={9} className="text-center text-muted-foreground">
+                      <TableCell colSpan={canEdit ? 10 : 9} className="text-center text-muted-foreground">
                         Carregando...
                       </TableCell>
                     </TableRow>
                   ) : visibleRows.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={9} className="text-center text-muted-foreground">
+                      <TableCell colSpan={canEdit ? 10 : 9} className="text-center text-muted-foreground">
                         Nenhum lançamento ainda.
                       </TableCell>
                     </TableRow>
@@ -1423,13 +1548,33 @@ export function Freelancers() {
                             Number(r.daily_rate) + Number((r as any).deliveries_total || 0),
                           )}
                         </TableCell>
-                        {isAdmin && (
-                          <TableCell>
+                        {canEdit && (
+                          <TableCell className="text-right whitespace-nowrap">
                             <Button
                               variant="ghost"
                               size="icon"
-                              onClick={() => deleteMutation.mutate(r.id)}
+                              onClick={() => openEditModal(r)}
+                              title="Editar lançamento"
+                              aria-label="Editar"
+                              className="text-primary hover:text-primary hover:bg-primary/10"
+                            >
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => {
+                                if (
+                                  window.confirm(
+                                    `Deseja realmente excluir o lançamento de ${r.name} em ${formatDateBR(r.entry_date)}?`,
+                                  )
+                                ) {
+                                  deleteMutation.mutate(r.id);
+                                }
+                              }}
+                              title="Excluir lançamento"
                               aria-label="Excluir"
+                              className="text-destructive hover:text-destructive hover:bg-destructive/10"
                             >
                               <Trash2 className="h-4 w-4" />
                             </Button>
@@ -1443,6 +1588,218 @@ export function Freelancers() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Modal de Edição de Lançamento */}
+        <Dialog open={!!editingEntry} onOpenChange={(open) => !open && setEditingEntry(null)}>
+          <DialogContent className="sm:max-w-lg">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <Pencil className="h-5 w-5 text-primary" />
+                Editar Lançamento
+              </DialogTitle>
+            </DialogHeader>
+            <form onSubmit={handleSaveEdit} className="space-y-4 py-2">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <Label className="text-xs">Data</Label>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="outline"
+                        className="w-full justify-start text-left font-normal"
+                      >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {editForm.entry_date ? (
+                          format(new Date(editForm.entry_date + "T12:00:00"), "dd/MM/yyyy", { locale: ptBR })
+                        ) : (
+                          <span>dd/mm/aaaa</span>
+                        )}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={editForm.entry_date ? new Date(editForm.entry_date + "T12:00:00") : undefined}
+                        onSelect={(date) => {
+                          if (date) {
+                            const y = date.getFullYear();
+                            const m = String(date.getMonth() + 1).padStart(2, "0");
+                            const d = String(date.getDate()).padStart(2, "0");
+                            setEditForm((prev) => ({ ...prev, entry_date: `${y}-${m}-${d}` }));
+                          }
+                        }}
+                        disabled={(date) => date > new Date()}
+                        locale={ptBR}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
+
+                <div className="space-y-1">
+                  <Label className="text-xs">Loja</Label>
+                  <Select
+                    value={editForm.unit}
+                    onValueChange={(v) => setEditForm((prev) => ({ ...prev, unit: v as Unit }))}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {UNITS.map((u) => (
+                        <SelectItem key={u} value={u}>
+                          {getUnitDisplayName(u)}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <Label className="text-xs">Prestador de Serviço</Label>
+                <Select
+                  value={registry.some((f) => f.nome === editForm.name) ? editForm.name : "_custom_"}
+                  onValueChange={(name) => {
+                    if (name === "_custom_") return;
+                    const reg = registry.find((f) => f.nome === name);
+                    setEditForm((prev) => ({
+                      ...prev,
+                      name,
+                      pix: reg?.pix || prev.pix,
+                      role: (reg?.role as "Operador" | "Entregador") || prev.role,
+                    }));
+                  }}
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Selecione um prestador cadastrado" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {registry.map((f) => (
+                      <SelectItem key={f.id} value={f.nome}>
+                        {f.nome} ({f.role || "Operador"})
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <Input
+                  value={editForm.name}
+                  onChange={(e) => setEditForm((prev) => ({ ...prev, name: e.target.value }))}
+                  placeholder="Nome do prestador"
+                  className="mt-1.5"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <Label className="text-xs">Chave Pix</Label>
+                  <Input
+                    value={editForm.pix}
+                    onChange={(e) => setEditForm((prev) => ({ ...prev, pix: e.target.value }))}
+                    placeholder="Chave Pix"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <Label className="text-xs">Função</Label>
+                  <Select
+                    value={editForm.role}
+                    onValueChange={(v: "Operador" | "Entregador") =>
+                      setEditForm((prev) => ({ ...prev, role: v }))
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Operador">Operador</SelectItem>
+                      <SelectItem value="Entregador">Entregador</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <Label className="text-xs">Valor da Diária (R$)</Label>
+                <CurrencyInput
+                  value={editForm.daily_rate}
+                  onValueChange={(v) => setEditForm((prev) => ({ ...prev, daily_rate: v }))}
+                />
+              </div>
+
+              {editForm.role === "Entregador" && (
+                <div className="rounded-lg border border-border/60 bg-muted/20 p-3 space-y-3">
+                  <p className="text-xs font-semibold text-muted-foreground">Entregas (Opcional)</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="space-y-1">
+                      <Label className="text-xs">Qtd. entregas R$ 5,00</Label>
+                      <Input
+                        type="number"
+                        min={0}
+                        value={editForm.deliveries_5 || ""}
+                        onChange={(e) =>
+                          setEditForm((prev) => ({
+                            ...prev,
+                            deliveries_5: Number(e.target.value) || 0,
+                            deliveries_total: undefined,
+                          }))
+                        }
+                        placeholder="0"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <Label className="text-xs">Qtd. entregas R$ 6,00</Label>
+                      <Input
+                        type="number"
+                        min={0}
+                        value={editForm.deliveries_6 || ""}
+                        onChange={(e) =>
+                          setEditForm((prev) => ({
+                            ...prev,
+                            deliveries_6: Number(e.target.value) || 0,
+                            deliveries_total: undefined,
+                          }))
+                        }
+                        placeholder="0"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-1">
+                    <Label className="text-xs">Valor Total das Entregas (R$)</Label>
+                    <Input
+                      readOnly
+                      className="bg-muted font-semibold"
+                      value={formatBRLCurrency(
+                        (editForm.deliveries_5 || 0) * 5 +
+                          (editForm.deliveries_6 || 0) * 6 +
+                          (editForm.deliveries_5 === 0 &&
+                          editForm.deliveries_6 === 0 &&
+                          editForm.deliveries_total
+                            ? editForm.deliveries_total
+                            : 0),
+                      )}
+                    />
+                  </div>
+                </div>
+              )}
+
+              <DialogFooter className="pt-3">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setEditingEntry(null)}
+                  disabled={updateMutation.isPending}
+                >
+                  Cancelar
+                </Button>
+                <Button type="submit" disabled={updateMutation.isPending}>
+                  {updateMutation.isPending ? "Salvando..." : "Salvar Alterações"}
+                </Button>
+              </DialogFooter>
+            </form>
+          </DialogContent>
+        </Dialog>
+
 
         <ReceiptModal
           open={receiptOpen}
